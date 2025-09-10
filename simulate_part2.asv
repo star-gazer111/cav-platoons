@@ -14,16 +14,14 @@ if ~exist(fullfile(OUT,"feasible_vel"),"dir"), mkdir(fullfile(OUT,"feasible_vel"
 %% --- Config
 DT = 0.1; T_END = 22.0; N = round(T_END/DT);
 
-% Discs
-R_S=1.0; R_O=1.0; R_SUM = R_S+R_O;
-
 % Lane
 LANE_CENTER_X = 0.0; LANE_HALF_WIDTH = 4.0;
 ROAD_LEFT  = LANE_CENTER_X + LANE_HALF_WIDTH;
 ROAD_RIGHT = LANE_CENTER_X - LANE_HALF_WIDTH;
 road_left_vehicle_safety_limit = ROAD_LEFT - R_S;
 road_right_vehicle_safety_limit = ROAD_RIGHT + R_S;
-
+% Discs
+R_S=1.0; R_O=1.0; R_SUM = R_S+R_O;
 
 % SV init
 sv_x=0.0; sv_y=-40.0; sv_v=12.0; sv_theta=deg2rad(90.0);

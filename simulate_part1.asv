@@ -25,8 +25,8 @@ road_right = lane_center_x - lane_half_width;
 % Vehicle radii (disc approx)
 rS = 1.0; rO = 1.0; Rsum = rS + rO;
 
-road_left_vehicle_safety_limit = road_left - rS;
-road_right_vehicle_safety_limit = road_right + rS;
+road_left_vehicle_safety_limit = road_left + rS;
+road_right_vehicle_safety_limit = road_right - rs
 
 
 % SV init
@@ -94,7 +94,7 @@ for k = 1:N
                 x_tmp = x_tmp + vtmp*cos(th)*dt;
                 y_tmp = y_tmp + vtmp*sin(th)*dt;
 
-                if ~(in_lane(x_tmp, road_right_vehicle_safety_limit, road_left_vehicle_safety_limit)), ok=false; break; end
+                if ~(in_lane(x_tmp, road_right, road_left)), ok=false; break; end
                 if hypot(x_tmp-ov_x,y_tmp-ov_y) <= Rsum, ok=false; break; end
                 rr = crpf(x_tmp, y_tmp, ov_x, ov_y, 0.0, 0,0, m_O, size_O, kappa_O, CRPF_G, CRPF_ZETA, PSEUDO_EPS, PSEUDO_RHO);
                 acc_risk = acc_risk + rr;

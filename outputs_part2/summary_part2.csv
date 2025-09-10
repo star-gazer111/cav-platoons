@@ -1,0 +1,2 @@
+CollisionOccurred,OV_Speed_mps,OV_Heading_deg,MinDistance_m,MinTTC_s,TET_s_TTC_lt_thr,TTC_Threshold_s,FinalSV_X_m,FinalSV_Y_m,FinalSV_Speed_mps,StepsSimulated
+0,7,90,10.806400891857,3.18928571428571,0,2,2.93781121593365,143.60059782992,7.00000000000001,220
