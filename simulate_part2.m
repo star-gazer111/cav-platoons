@@ -1,319 +1,266 @@
-function simulate_part2()
-% Part 2: Single SV vs single OV moving at constant velocity
-% Includes: CRPF, VO, DWA, TTC/TET KPIs, CRPF contours+trajectory,
-% VO diagnostic, time series, feasible-velocity clouds every K steps.
-%
-% Usage:
-%   simulate_part2
+function simulate_part_2()
+% Blue-style zoom (v3) — MATLAB port
+% - Y-axis shown from -50 to 500 m with ticks every 20 m
+% - OV starting Y = +10 m
+% - Adds TURN2 markers where SV merges back to the center lane
+% Outputs: trajectory_zoom_blue.png
 
-rng(0);
-OUT = "outputs_part2";
-if ~exist(OUT,"dir"), mkdir(OUT); end
-if ~exist(fullfile(OUT,"feasible_vel"),"dir"), mkdir(fullfile(OUT,"feasible_vel")); end
+%% ---- params (kept identical) ----
+DT = 0.1;
+T_END = 40.0;
+N = round(T_END/DT);
 
-%% --- Config
-DT = 0.1; T_END = 22.0; N = round(T_END/DT);
+LANE_CENTER_X   = 0.0;
+LANE_HALF_WIDTH = 4.0;
+ROAD_LEFT  = LANE_CENTER_X + LANE_HALF_WIDTH; %#ok<NASGU>
+ROAD_RIGHT = LANE_CENTER_X - LANE_HALF_WIDTH; %#ok<NASGU>
 
-% Discs
-R_S=1.0; R_O=1.0; R_SUM = R_S+R_O;
+SV_x0     = 0.0;
+SV_y0     = -26.0;
+SV_vy0    = 12.0;
+SV_theta0 = deg2rad(90.0); %#ok<NASGU>
 
-% Lane
-LANE_CENTER_X = 0.0; LANE_HALF_WIDTH = 4.0;
-ROAD_LEFT  = LANE_CENTER_X + LANE_HALF_WIDTH;
-ROAD_RIGHT = LANE_CENTER_X - LANE_HALF_WIDTH;
-road_left_vehicle_safety_limit = ROAD_LEFT - R_S;
-road_right_vehicle_safety_limit = ROAD_RIGHT + R_S;
+OV_x0    = 0.0;
+OV_y0    = 10.0;
+OV_speed = 7.0;
+OV_theta = deg2rad(90.0);
+OV_vx    = OV_speed*cos(OV_theta);
+OV_vy    = OV_speed*sin(OV_theta);
+OV_MASS  = 1600.0;
 
+VY_CRUISE = 14.0;
+VY_PASS   = 20.0;
 
-% SV init
-sv_x=0.0; sv_y=-40.0; sv_v=12.0; sv_theta=deg2rad(90.0);
+X_PASS        = 3.5;
+TTC_THRESH    = 2.0;
+AHEAD_GAP     = 10.0;
+MIN_PASS_TIME = 1.6;
+CRPF_LOW_MAX  = 1.6;
 
-% Limits
-ACC_MIN=-4.0; ACC_MAX=2.0; OMEGA_MIN=-0.5; OMEGA_MAX=0.5; V_MIN=0.0; V_MAX=22.0; V_DES=14.0;
+TAU_LC = 2.0;
+TAU_MB = 2.0;
 
-% DWA sampling
-ACC_SAMPLES=7; OMEGA_SAMPLES=11; LOOKAHEAD_STEPS=10;
+G    = 0.5;
+zeta = 1.2;
+rho  = 0.02;
+epsY = 1.2;
 
-% CRPF tuning
-CRPF_G=1.0; CRPF_ZETA=2.2; PSEUDO_EPS=1.2; PSEUDO_RHO=0.02;
+%% ---- storage ----
+sv_x = zeros(N,1); sv_y = zeros(N,1); sv_vy = zeros(N,1);
+ov_x = zeros(N,1); ov_y = zeros(N,1);
+phase_log = zeros(N,1,'int16'); % 0=follow,1=lc,2=pass,3=merge,4=done
 
-% OV motion (constant velocity)
-ov_x0=0.0; ov_y0=0.0; ov_speed=7.0; ov_heading=deg2rad(90.0);
-ov_vx=ov_speed*cos(ov_heading); ov_vy=ov_speed*sin(ov_heading);
-ov_ax=0.0; ov_ay=0.0; OV_MASS=1600.0; OV_SIZE=4.6; OV_KAPPA=1.0;
+sv_x(1)  = SV_x0;  sv_y(1)  = SV_y0;  sv_vy(1) = SV_vy0;
+ov_x(1)  = OV_x0;  ov_y(1)  = OV_y0;
 
-% Planner weights
-W_RISK=1.0; W_V_TRACK=0.12; W_STEER_SMO=0.06;
+phase      = "follow";
+phase_id   = struct('follow',0,'lc',1,'pass',2,'merge',3,'done',4);
+t_phase    = 0.0;
+turn_index = [];      % first lane-change start index
+turn2_index = [];     % first return-to-center index
+t_in_pass  = 0.0;
 
-% VO / KPIs
-VO_HORIZON_S=8.0; TTC_THRESH_S=2.0;
-SAVE_FEASIBLE_EVERY=5; VEL_CLOUD_RANGE=18.0;
+%% ---- simulate ----
+for k = 2:N
+    t = (k-1)*DT;
 
-%% --- Precompute CRPF field (t=0)
-gx=linspace(-12,12,121); gy=linspace(-50,120,145);
-CR = zeros(numel(gy), numel(gx));
-for j=1:numel(gy)
-    for i=1:numel(gx)
-        CR(j,i) = crpf(gx(i), gy(j), ov_x0, ov_y0, ov_speed, 0,0, OV_MASS, OV_SIZE, OV_KAPPA, CRPF_G, CRPF_ZETA, PSEUDO_EPS, PSEUDO_RHO);
+    % OV motion
+    ov_y(k) = ov_y(k-1) + OV_vy*DT;
+    ov_x(k) = OV_x0;
+
+    same_lane = (abs(sv_x(k-1) - LANE_CENTER_X) < 0.5) && any(phase == ["follow","lc"]);
+    if phase == "follow"
+        if ttc_y(sv_y(k-1), sv_vy(k-1), ov_y(k-1), OV_vy, same_lane) < TTC_THRESH
+            phase = "lc"; t_phase = 0.0; turn_index = k;
+        end
     end
-end
 
-%% --- Simulation
-log = struct('t',[],'sv_x',[],'sv_y',[],'sv_v',[],'sv_theta',[], ...
-             'ov_x',[],'ov_y',[],'dist_to_ov',[],'risk',[],'ttc',[], ...
-             'picked_v',[],'picked_dtheta',[]);
-tet_seconds=0.0; min_ttc=inf; min_dist=inf;
-
-acc_grid = linspace(ACC_MIN, ACC_MAX, ACC_SAMPLES);
-omega_grid = linspace(OMEGA_MIN, OMEGA_MAX, OMEGA_SAMPLES);
-
-for k=1:N
-    t=(k-1)*DT;
-    ov_x = ov_x0 + ov_vx*t; ov_y = ov_y0 + ov_vy*t;
-
-    p_rel = [sv_x-ov_x, sv_y-ov_y];
-    v_rel = [sv_v*cos(sv_theta)-ov_vx, sv_v*sin(sv_theta)-ov_vy];
-    dist = norm(p_rel);
-
-    [~, ttc_now] = will_collide(p_rel, v_rel, R_SUM, VO_HORIZON_S);
-    if isfinite(ttc_now)
-        min_ttc = min(min_ttc, ttc_now);
-        if ttc_now < TTC_THRESH_S, tet_seconds = tet_seconds + DT; end
+    if phase == "lc" && t_phase >= TAU_LC
+        phase = "pass"; t_phase = 0.0; t_in_pass = 0.0;
     end
-    min_dist = min(min_dist, dist);
 
-    risk_now = crpf(sv_x, sv_y, ov_x, ov_y, ov_speed, 0,0, OV_MASS, OV_SIZE, OV_KAPPA, CRPF_G, CRPF_ZETA, PSEUDO_EPS, PSEUDO_RHO);
+    if phase == "pass"
+        t_in_pass = t_in_pass + DT;
+        E_now = crpf_mag(sv_x(k-1), sv_y(k-1), ov_x(k-1), ov_y(k-1), OV_speed, G, zeta, rho, epsY, OV_MASS);
+        ahead = (sv_y(k-1) - ov_y(k-1)) >= AHEAD_GAP;
+        long_enough = (t_in_pass >= MIN_PASS_TIME);
+        low_risk = (E_now <= CRPF_LOW_MAX);
+        if (ahead || long_enough) && low_risk
+            phase = "merge"; t_phase = 0.0;
+        end
+    end
 
-    feas = []; rej = []; best_cost=inf; best_v_next=sv_v; best_theta_next=sv_theta; best_dtheta=0.0;
-    for a_cmd = acc_grid
-        v_next = min(max(sv_v + a_cmd*DT, V_MIN), V_MAX);
-        for d_omega = omega_grid
-            theta_next = sv_theta + d_omega*DT;
-
-            x_tmp=sv_x; y_tmp=sv_y; th=theta_next; vtmp=v_next; ok=true; acc_risk=0;
-            for s=1:LOOKAHEAD_STEPS
-                t_sub = t + s*DT;
-                ov_x_sub = ov_x0 + ov_vx*t_sub; ov_y_sub = ov_y0 + ov_vy*t_sub;
-
-                x_tmp = x_tmp + vtmp*cos(th)*DT;
-                y_tmp = y_tmp + vtmp*sin(th)*DT;
-
-                if ~(in_lane(x_tmp, road_right_vehicle_safety_limit, road_left_vehicle_safety_limit)), ok=false; break; end
-                if hypot(x_tmp-ov_x_sub, y_tmp-ov_y_sub) <= R_SUM, ok=false; break; end
-
-                rr = crpf(x_tmp, y_tmp, ov_x_sub, ov_y_sub, ov_speed, 0,0, OV_MASS, OV_SIZE, OV_KAPPA, CRPF_G, CRPF_ZETA, PSEUDO_EPS, PSEUDO_RHO);
-                acc_risk = acc_risk + rr;
-            end
-
-            vx_cand = v_next*cos(theta_next); vy_cand = v_next*sin(theta_next);
-            if ok
-                feas(end+1,:) = [vx_cand, vy_cand]; %#ok<AGROW>
-                cost = W_RISK*acc_risk + W_V_TRACK*(V_DES - v_next)^2 + W_STEER_SMO*(d_omega^2);
-                if cost < best_cost
-                    best_cost=cost; best_v_next=v_next; best_theta_next=theta_next; best_dtheta=d_omega*DT;
-                end
-            else
-                rej(end+1,:) = [vx_cand, vy_cand]; %#ok<AGROW>
+    if phase == "merge"
+        % detect first return to center within tolerance -> mark turn2
+        if isempty(turn2_index) && abs(sv_x(k-1) - LANE_CENTER_X) < 0.05
+            turn2_index = k-1;
+        end
+        if t_phase >= TAU_MB
+            phase = "done"; t_phase = 0.0;
+            if isempty(turn2_index)
+                turn2_index = k; % fallback if tolerance not hit exactly
             end
         end
     end
 
-    if mod(k-1, SAVE_FEASIBLE_EVERY)==0
-        f=figure('Color','w','Visible','off'); hold on;
-        title(sprintf('Feasible Velocity Cloud (t=%.1fs)', t));
-        if ~isempty(rej), scatter(rej(:,1), rej(:,2), 8, 'x', 'MarkerEdgeAlpha',0.35, 'DisplayName','rejected'); end
-        if ~isempty(feas), scatter(feas(:,1), feas(:,2), 12, 'filled', 'DisplayName','feasible'); end
-        scatter(sv_v*cos(sv_theta), sv_v*sin(sv_theta), 36, 'filled', 'DisplayName','current v');
-        xlim([-VEL_CLOUD_RANGE VEL_CLOUD_RANGE]); ylim([-VEL_CLOUD_RANGE VEL_CLOUD_RANGE]);
-        grid on; xlabel('v_x [m/s]'); ylabel('v_y [m/s]'); legend('Location','best');
-        exportgraphics(f, fullfile(OUT,"feasible_vel",sprintf("step_%04d.png",k-1)), 'Resolution',150); close(f);
+    if phase == "done" && isempty(turn2_index)
+        turn2_index = k;
     end
 
-    if ~isfinite(best_cost)
-        best_v_next = max(sv_v + ACC_MIN*DT, 0.0);
-        best_theta_next = sv_theta; best_dtheta=0.0;
+    % lateral reference
+    switch phase
+        case "follow"
+            x_ref = LANE_CENTER_X;
+        case "lc"
+            x_ref = LANE_CENTER_X + (X_PASS - LANE_CENTER_X)*quintic_s(t_phase, TAU_LC);
+        case "pass"
+            x_ref = X_PASS;
+        case "merge"
+            x_ref = X_PASS + (LANE_CENTER_X - X_PASS)*quintic_s(t_phase, TAU_MB);
+        otherwise
+            x_ref = LANE_CENTER_X;
     end
 
-    sv_v = best_v_next; sv_theta = wrapToPi(best_theta_next);
-    sv_x = sv_x + sv_v*cos(sv_theta)*DT;
-    sv_y = sv_y + sv_v*sin(sv_theta)*DT;
+    % longitudinal reference
+    if any(phase == ["pass","merge"])
+        vy_ref = VY_PASS;
+    else
+        vy_ref = VY_CRUISE;
+    end
 
-    % log
-    log.t(end+1,1)=t; log.sv_x(end+1,1)=sv_x; log.sv_y(end+1,1)=sv_y;
-    log.sv_v(end+1,1)=sv_v; log.sv_theta(end+1,1)=sv_theta;
-    log.ov_x(end+1,1)=ov_x; log.ov_y(end+1,1)=ov_y;
-    log.dist_to_ov(end+1,1)=dist; log.risk(end+1,1)=risk_now;
-    log.ttc(end+1,1)=ttc_now; log.picked_v(end+1,1)=sv_v; log.picked_dtheta(end+1,1)=best_dtheta;
-end
+    sv_x(k)  = x_ref;
+    % first-order lag to vy_ref with time-constant ≈ 1/1.6 s
+    sv_vy(k) = sv_vy(k-1) + (vy_ref - sv_vy(k-1))*(1 - exp(-DT*1.6));
+    sv_y(k)  = sv_y(k-1) + sv_vy(k)*DT;
 
-TBL = struct2table(log);
-writetable(TBL, fullfile(OUT,"trajectory_part2.csv"));
+    phase_log(k) = phase_id.(char(phase));
+    t_phase = t_phase + DT;
 
-summary = table(false, ov_speed, rad2deg(ov_heading), min(TBL.dist_to_ov), ...
-                 min(TBL.ttc,[],'omitnan'), tet_seconds, 2.0, ...
-                 TBL.sv_x(end), TBL.sv_y(end), TBL.sv_v(end), height(TBL), ...
-'VariableNames', {'CollisionOccurred','OV_Speed_mps','OV_Heading_deg','MinDistance_m','MinTTC_s','TET_s_TTC_lt_thr','TTC_Threshold_s','FinalSV_X_m','FinalSV_Y_m','FinalSV_Speed_mps','StepsSimulated'});
-writetable(summary, fullfile(OUT,"summary_part2.csv"));
-disp(summary);
-
-%% --- Plot: CRPF at the turning instant ONLY (no t=0 field) ---
-
-% 1) find turning instant (max |dθ/dt|)
-t_arr = TBL.t;
-th_u  = unwrap(TBL.sv_theta);
-if numel(t_arr) >= 2
-    dth    = abs(th_u(2:end) - th_u(1:end-1));
-    dt_seg = t_arr(2:end) - t_arr(1:end-1);  dt_seg(dt_seg==0) = 1e-9;
-    turn_rate = dth ./ dt_seg;              % length N-1
-    [~, idx_max] = max(turn_rate);
-    idx_turn = min(max(idx_max+1,1), numel(t_arr));  % map to sample index
-else
-    idx_turn = 1;
-end
-t_turn = t_arr(idx_turn);
-
-% 2) OV position & speed at that instant
-ov_x_turn = TBL.ov_x(idx_turn);
-ov_y_turn = TBL.ov_y(idx_turn);
-if idx_turn >= 2
-    dtloc = max(t_arr(idx_turn) - t_arr(idx_turn-1), 1e-9);
-    ov_vx_turn = (TBL.ov_x(idx_turn) - TBL.ov_x(idx_turn-1))/dtloc;
-    ov_vy_turn = (TBL.ov_y(idx_turn) - TBL.ov_y(idx_turn-1))/dtloc;
-    ov_speed_turn = hypot(ov_vx_turn, ov_vy_turn);
-else
-    ov_speed_turn = 0.0;
-end
-
-% 3) recompute CRPF on the same grid at the turning instant
-CR_turn = zeros(numel(gy), numel(gx));
-for jj = 1:numel(gy)
-    for ii = 1:numel(gx)
-        CR_turn(jj,ii) = crpf(gx(ii), gy(jj), ov_x_turn, ov_y_turn, ...
-                              ov_speed_turn, 0,0, OV_MASS, OV_SIZE, OV_KAPPA, ...
-                              CRPF_G, CRPF_ZETA, PSEUDO_EPS, PSEUDO_RHO);
+    % early stop if we leave plotting window like the Python
+    if sv_y(k) > 500
+        sv_x  = sv_x(1:k);
+        sv_y  = sv_y(1:k);
+        sv_vy = sv_vy(1:k);
+        ov_x  = ov_x(1:k);
+        ov_y  = ov_y(1:k);
+        phase_log = phase_log(1:k);
+        N = k;
+        break
     end
 end
 
-% 4) figure with CRPF heatmap at turn instant + contours + paths/markers
-figure('Color','w');
-imagesc(gx, gy, log10(CR_turn + 1e-9)); axis xy; hold on; colorbar;
-title(sprintf('CRPF at turn instant (t = %.1fs) + Contours + Trajectories', t_turn));
-
-% white contours (no LineAlpha in older MATLAB)
-[~, hC] = contour(gx, gy, log10(CR_turn + 1e-9), 12, 'LineWidth', 0.5);
-set(hC, 'LineColor', [1 1 1]);
-
-% lane boundaries (thick dotted)
-xline(ROAD_LEFT,  'k:', 'LineWidth', 2.0);
-xline(ROAD_RIGHT, 'k:', 'LineWidth', 2.0);
-
-% full paths
-h_sv = plot(TBL.sv_x, TBL.sv_y, 'r-', 'LineWidth', 2, 'DisplayName','SV path');
-h_ov = plot(TBL.ov_x, TBL.ov_y, 'Color',[1 0.5 0], 'LineStyle','--', ...
-            'LineWidth', 1.6, 'DisplayName','OV path');
-
-% start markers (smaller)
-h_svstart = scatter(TBL.sv_x(1), TBL.sv_y(1), 20, 'r', 'filled', ...
-                    'MarkerEdgeColor','k', 'DisplayName','SV start');
-h_ovstart = scatter(TBL.ov_x(1), TBL.ov_y(1), 20, [1 0.5 0], 'filled', ...
-                    'MarkerEdgeColor','k', 'DisplayName','OV start');
-
-% turn-instant markers (slightly larger)
-h_svdot = scatter(TBL.sv_x(idx_turn), TBL.sv_y(idx_turn), 30, 'r', 'filled', ...
-                  'MarkerEdgeColor','k', 'DisplayName','SV @ turn instant');
-h_ovdot = scatter(ov_x_turn, ov_y_turn, 30, [1 0.5 0], 'filled', ...
-                  'MarkerEdgeColor','k', 'DisplayName','OV @ turn instant');
-
-xlabel('X [m]'); ylabel('Y [m]'); grid on;
-
-% (optional) ensure desired vertical view height, e.g. up to +120 m
-% ylim([min(gy) 120]);
-
-% legend with only relevant entries
-legend([h_sv, h_ov, h_svstart, h_ovstart, h_svdot, h_ovdot, hC(1)], ...
-       {'SV path','OV path','SV start','OV start','SV @ turn instant','OV @ turn instant','CRPF contours'}, ...
-       'Location','best');
-
-% save figure
-if exist('exportgraphics','file')
-    exportgraphics(gcf, fullfile(OUT, "fig_crpf_turn_instant.png"), 'Resolution', 170);
-else
-    print(gcf, fullfile(OUT, "fig_crpf_turn_instant.png"), '-dpng', '-r170');
-end
-% B) Time series incl. TTC
-figure('Color','w');
-subplot(4,1,1); plot(TBL.t, TBL.sv_v); ylabel('SV Speed [m/s]'); grid on;
-subplot(4,1,2); plot(TBL.t, TBL.dist_to_ov); hold on; yline(R_SUM,'r--'); ylabel('Dist to OV [m]'); grid on;
-subplot(4,1,3); plot(TBL.t, TBL.risk); ylabel('CRPF'); grid on;
-subplot(4,1,4); plot(TBL.t, TBL.ttc); hold on; yline(2.0,'r--','TTC thr'); ylabel('TTC [s]'); xlabel('Time [s]'); grid on;
-if exist('exportgraphics','file')
-    exportgraphics(gcf, fullfile(OUT,"fig_timeseries_ttc.png"), 'Resolution',170);
-else
-    print(gcf, fullfile(OUT,"fig_timeseries_ttc.png"), '-dpng', '-r170');
+if isempty(turn_index)
+    turn_index = floor(0.25 * N);
 end
 
-% C) VO diagnostic at t=0 (relative velocities) — make unsafe region red
-V = linspace(-20,20,81); U = linspace(-20,20,81);
-unsafe = false(numel(U),numel(V));
-p0 = [TBL.sv_x(1)-TBL.ov_x(1), TBL.sv_y(1)-TBL.ov_y(1)];
-for i=1:numel(U)
-    for j=1:numel(V)
-        unsafe(i,j) = will_collide(p0, [U(i),V(j)], R_SUM, VO_HORIZON_S);
+if isempty(turn2_index)
+    idxs = find(phase_log==4 & abs(sv_x - LANE_CENTER_X) < 0.05, 1, 'first');
+    if ~isempty(idxs), turn2_index = idxs; else, turn2_index = N; end
+end
+
+xo = ov_x(turn_index);
+yo = ov_y(turn_index);
+
+%% ---- CRPF grid at turn instant (like Python) ----
+gx = linspace(-12, 12, 241);
+gy = linspace(-50, 500, 1001);
+[GX, GY] = meshgrid(gx, gy);
+Z = crpf_grid(GX, GY, xo, yo, OV_speed, G, zeta, rho, epsY, OV_MASS);
+
+%% ---- plot ----
+figure('Color','w','Position',[100 100 1260 680]); hold on;
+
+% pcolormesh equivalent
+imagesc(gx, gy, Z); set(gca,'YDir','normal');
+colormap(turbo);
+cb = colorbar; ylabel(cb, 'log_{10}(|E_V|)');
+
+% contour levels
+Zmin = min(Z(:)); Zmax = max(Z(:));
+levels = linspace(Zmin + 0.2*(Zmax - Zmin), Zmax, 14);
+[~, hC] = contour(GX, GY, Z, levels, 'LineColor', [1 1 1], 'LineWidth', 0.7); %#ok<ASGLU>
+
+% Paths
+crimson = [220 20 60]/255;
+orange  = [1.0 0.55 0.0];
+plot(sv_x, sv_y, 'Color', crimson, 'LineWidth', 2.2, 'DisplayName','SV path');
+plot(ov_x, ov_y, '--', 'Color', orange, 'LineWidth', 1.8, 'DisplayName','OV path');
+
+% Markers: starts
+scatter(sv_x(1), sv_y(1), 36, 'MarkerFaceColor', crimson, 'MarkerEdgeColor','k', 'DisplayName','SV start', 'LineWidth',0.8);
+scatter(ov_x(1), ov_y(1), 36, 'MarkerFaceColor', orange,  'MarkerEdgeColor','k', 'DisplayName','OV start', 'LineWidth',0.8);
+
+% turn1
+scatter(sv_x(turn_index), sv_y(turn_index), 44, 'MarkerFaceColor', crimson, 'MarkerEdgeColor','k', 'DisplayName','SV @ turn', 'LineWidth',0.8);
+scatter(ov_x(turn_index), ov_y(turn_index), 44, 'MarkerFaceColor', orange,  'MarkerEdgeColor','k', 'DisplayName','OV @ turn', 'LineWidth',0.8);
+
+% turn2 (unfilled)
+scatter(sv_x(turn2_index), sv_y(turn2_index), 44, 'o', 'MarkerEdgeColor','k', 'MarkerFaceColor', 'none', 'LineWidth',1.3, 'DisplayName','SV @ turn2');
+scatter(ov_x(turn2_index), ov_y(turn2_index), 44, 'o', 'MarkerEdgeColor','k', 'MarkerFaceColor', 'none', 'LineWidth',1.3, 'DisplayName','OV @ turn2');
+
+% Lane markers
+xline(LANE_CENTER_X - LANE_HALF_WIDTH, ':', 'Color','k', 'LineWidth',1.4);
+xline(LANE_CENTER_X + LANE_HALF_WIDTH, ':', 'Color','k', 'LineWidth',1.4);
+for xl = [-4 4]
+    xline(xl, ':', 'Color', [0 0 0], 'LineWidth',0.9);
+end
+
+xlim([-12 12]);
+ylim([-50 500]);
+yticks(-50:20:500);
+xlabel('X [m]');
+ylabel('Y [m]');
+title(sprintf('CRPF at turn instant (t = %.1fs) + SV/OV Trajectories (zoomed main)', (turn_index-1)*DT));
+legend('Location','northeast');
+
+% Save at ~170 dpi
+exportgraphics(gcf, 'trajectory_zoom_blue.png', 'Resolution', 170);
+
+fprintf('Saved trajectory_zoom_blue.png\n');
+fprintf('turn_index=%d, turn2_index=%d, t_turn2=%.2fs\n', turn_index, turn2_index, (turn2_index-1)*DT);
+end
+
+%% ---------- helpers ----------
+function val = crpf_mag(xs, ys, xo, yo, vov, G, zeta, rho, epsY, OV_MASS)
+    rd = pseudo_distance(xs, ys, xo, yo, vov, rho, epsY);
+    M  = virtual_mass(OV_MASS, vov);
+    val = (G*M) / (rd.^zeta);
+end
+
+function rd = pseudo_distance(xs, ys, xo, yo, vov, rho, epsY)
+    dx = xs - xo;
+    dy = ys - yo;
+    scale = exp(-rho*max(vov,0.0));
+    rd = hypot(dx, (abs(dy).^epsY)*scale) + 1e-9;
+end
+
+function M = virtual_mass(m, v)
+    M = m*(1.566e-14*(max(v,0.0)^6.687) + 0.3354);
+end
+
+function out = ttc_y(svy, svvy, ovy, ovvy, same_lane)
+    if ~same_lane, out = 1e9; return; end
+    relv = svvy - ovvy;
+    rely = ovy - svy;
+    if relv <= 0 || rely <= 0
+        out = 1e9;
+    else
+        out = rely/relv;
     end
 end
-figure('Color','w');
-imagesc(U, V, flipud(unsafe.')); axis xy equal; grid on;
-title('VO diagnostic (relative) at t=0 — red = collision'); xlabel('v_{rel,x} [m/s]'); ylabel('v_{rel,y} [m/s]');
-colormap([0 0 1; 1 0 0]);  % 0=false=blue, 1=true=red
-if exist('exportgraphics','file')
-    exportgraphics(gcf, fullfile(OUT,"fig_vo_diagnostic.png"), 'Resolution',170);
-else
-    print(gcf, fullfile(OUT,"fig_vo_diagnostic.png"), '-dpng', '-r170');
+
+function s = quintic_s(t, T)
+    tau = max(0.0, min(1.0, t/T));
+    s = 10*tau^3 - 15*tau^4 + 6*tau^5;
 end
 
-
-%% ========== helpers ==========
-function ok=in_lane(x, rright, rleft), ok=(x>=rright)&&(x<=rleft); end
-end % simulate_part2
-
-% ---------- helper functions (same as in Part 1) ----------
-function val = crpf(xs, ys, xo, yo, v_obs, ax, ay, m_obs, size_obs, kappa_obs, G, zeta, eps, rho)
-    rd = pseudo_distance(xs, ys, xo, yo, v_obs, eps, rho);
-    if rd < 1e-6, rd = 1e-6; end
-    M = virtual_mass(m_obs, v_obs);
-    Tfac = type_factor(size_obs, kappa_obs);
-    phi = accel_factor(ax, ay, xs, ys, xo, yo);
-    val = G*M*Tfac*1.0*phi/(rd^zeta);
-end
-function rd = pseudo_distance(xs, ys, xo, yo, v_obs, eps, rho)
-    dx=xs-xo; dy=ys-yo;
-    termx = sign(dx)*(abs(dx)^eps)*exp(-rho*max(v_obs,0.0));
-    termy = sign(dy)*(abs(dy)^eps);
-    rd = hypot(termx, termy);
-end
-function phi = accel_factor(ax, ay, xs, ys, xo, yo)
-    K=1.0; a=[ax,ay]; rd=[xs-xo,ys-yo];
-    na=norm(a); nr=norm(rd);
-    if na<1e-9||nr<1e-9, phi=1.0; return; end
-    cos_t = dot(a/na, rd/nr);
-    denom = max(min(K - na*cos_t, 10.0), 0.2);
-    phi = K/denom;
-end
-function M = virtual_mass(m,v), M = m*(1.566e-14*(max(v,0.0)^6.687) + 0.3354); end
-function Tfac = type_factor(size,kappa), Tfac=(size/4.0)*(kappa/1.0); end
-function [collide, ttc] = will_collide(p_rel, v_rel, R, horizon)
-    v2 = dot(v_rel,v_rel);
-    if v2 < 1e-12, collide=(norm(p_rel)<=R); ttc=inf; return; end
-    tstar = -dot(p_rel,v_rel)/v2; tstar = min(max(tstar,0.0), horizon);
-    dmin = norm(p_rel + tstar*v_rel); ttc = inf;
-    if dot(p_rel,v_rel) < 0
-        a=v2; b=2*dot(p_rel,v_rel); c=dot(p_rel,p_rel)-R^2;
-        disc=b*b-4*a*c;
-        if disc>=0
-            r1=(-b - sqrt(disc))/(2*a); r2=(-b + sqrt(disc))/(2*a);
-            roots=[r1,r2]; roots=roots(roots>=0);
-            if ~isempty(roots), ttc=min(roots); end
-        end
-    end
-    collide = (dmin <= R);
+function Z = crpf_grid(GX, GY, xo, yo, speed, G, zeta, rho, epsY, OV_MASS)
+    % vectorized version of Python crpf_grid
+    Mconst = virtual_mass(OV_MASS, speed);
+    scale  = exp(-0.02 * speed);
+    dx = GX - xo;
+    dy = abs(GY - yo);
+    rd = sqrt(dx.^2 + (dy.^epsY).*(scale.^2)) + 1e-9;
+    CR = (G*Mconst) ./ (rd.^zeta);
+    Z = log10(CR + 1e-12);
 end
