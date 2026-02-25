@@ -1,0 +1,26 @@
+running develop
+running egg_info
+creating paper_implementation.egg-info
+writing paper_implementation.egg-info/PKG-INFO
+writing dependency_links to paper_implementation.egg-info/dependency_links.txt
+writing entry points to paper_implementation.egg-info/entry_points.txt
+writing requirements to paper_implementation.egg-info/requires.txt
+writing top-level names to paper_implementation.egg-info/top_level.txt
+writing manifest file 'paper_implementation.egg-info/SOURCES.txt'
+reading manifest file 'paper_implementation.egg-info/SOURCES.txt'
+writing manifest file 'paper_implementation.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/sanya/ros2_ws/install/paper_implementation/lib/python3.10/site-packages/paper-implementation.egg-link (link to .)
+Installing paper_node script to /home/sanya/ros2_ws/install/paper_implementation/lib/paper_implementation
+
+Installed /home/sanya/ros2_ws/build/paper_implementation
+running install_data
+creating /home/sanya/ros2_ws/install/paper_implementation/share/ament_index
+creating /home/sanya/ros2_ws/install/paper_implementation/share/ament_index/resource_index
+creating /home/sanya/ros2_ws/install/paper_implementation/share/ament_index/resource_index/packages
+copying resource/paper_implementation -> /home/sanya/ros2_ws/install/paper_implementation/share/ament_index/resource_index/packages
+copying package.xml -> /home/sanya/ros2_ws/install/paper_implementation/share/paper_implementation
+creating /home/sanya/ros2_ws/install/paper_implementation/share/paper_implementation/launch
+copying launch/simulation.launch.py -> /home/sanya/ros2_ws/install/paper_implementation/share/paper_implementation/launch
+creating /home/sanya/ros2_ws/install/paper_implementation/share/paper_implementation/models
+copying models/obstacle.sdf -> /home/sanya/ros2_ws/install/paper_implementation/share/paper_implementation/models

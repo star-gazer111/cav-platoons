@@ -1,0 +1,3 @@
+[console_scripts]
+paper_node = paper_implementation.collision_node:main
+

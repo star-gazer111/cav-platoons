@@ -1,0 +1,26 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/sanya/ros2_ws/install/turtlebot3_teleop/lib/python3.10/site-packages",
+        "/home/sanya/ros2_ws/install/turtlebot3_example/lib/python3.10/site-packages",
+        "/home/sanya/ros2_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages",
+        "/home/sanya/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages",
+        "/home/sanya/ros2_ws/install/more_interfaces/local/lib/python3.10/dist-packages",
+        "/home/sanya/ros2_ws/install/dynamixel_sdk_custom_interfaces/local/lib/python3.10/dist-packages",
+        "/home/sanya/ros2_ws/install/dynamixel_sdk/local/lib/python3.10/dist-packages",
+        "/home/sanya/ros2_ws/install/crpf_motion_planner/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/sanya/ros2_ws/install/turtlebot3_teleop/lib/python3.10/site-packages",
+        "/home/sanya/ros2_ws/install/turtlebot3_example/lib/python3.10/site-packages",
+        "/home/sanya/ros2_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages",
+        "/home/sanya/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages",
+        "/home/sanya/ros2_ws/install/more_interfaces/local/lib/python3.10/dist-packages",
+        "/home/sanya/ros2_ws/install/dynamixel_sdk_custom_interfaces/local/lib/python3.10/dist-packages",
+        "/home/sanya/ros2_ws/install/dynamixel_sdk/local/lib/python3.10/dist-packages",
+        "/home/sanya/ros2_ws/install/crpf_motion_planner/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
