@@ -29,6 +29,12 @@ setup(
         'console_scripts': [
             # syntax: executable_name = package_folder.filename:function
             'paper_node = paper_implementation.collision_node:main',
+            'collision_node_onesv_onemoving_ov = paper_implementation.collision_node_onesv_onemoving_ov:main',
+            'collision_node_onesv_overtake_moving_ov = paper_implementation.collision_node_onesv_overtake_moving_ov:main',
+            'collision_node_onesv_overtake_moving_ov_single_node = paper_implementation.collision_node_onesv_overtake_moving_ov_single_node:main',
+            'collision_node_two_sv_one_stationary_ov = paper_implementation.collision_node_two_sv_one_stationary_ov:main',
+            'collision_node_two_sv_one_moving_ov = paper_implementation.collision_node_two_sv_one_moving_ov:main',
+            'moving_obstacle_straight_driver = paper_implementation.moving_obstacle_straight_driver:main',
         ],
     },
 )

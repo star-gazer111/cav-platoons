@@ -1,0 +1,23 @@
+[0.566s] Invoking command in '/home/kaisirius/btp/cav-platoons/src/my_robot_controller': PYTHONPATH=/home/kaisirius/btp/cav-platoons/build/my_robot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kaisirius/btp/cav-platoons/install/my_robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_robot_controller build --build-base /home/kaisirius/btp/cav-platoons/build/my_robot_controller/build install --record /home/kaisirius/btp/cav-platoons/build/my_robot_controller/install.log --single-version-externally-managed install_data
+[0.695s] running egg_info
+[0.695s] writing ../../build/my_robot_controller/my_robot_controller.egg-info/PKG-INFO
+[0.695s] writing dependency_links to ../../build/my_robot_controller/my_robot_controller.egg-info/dependency_links.txt
+[0.695s] writing entry points to ../../build/my_robot_controller/my_robot_controller.egg-info/entry_points.txt
+[0.696s] writing requirements to ../../build/my_robot_controller/my_robot_controller.egg-info/requires.txt
+[0.696s] writing top-level names to ../../build/my_robot_controller/my_robot_controller.egg-info/top_level.txt
+[0.696s] reading manifest file '../../build/my_robot_controller/my_robot_controller.egg-info/SOURCES.txt'
+[0.701s] writing manifest file '../../build/my_robot_controller/my_robot_controller.egg-info/SOURCES.txt'
+[0.701s] running build
+[0.701s] running build_py
+[0.702s] running install
+[0.702s] running install_lib
+[0.704s] running install_data
+[0.704s] running install_egg_info
+[0.705s] removing '/home/kaisirius/btp/cav-platoons/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller-0.0.0-py3.10.egg-info' (and everything under it)
+[0.705s] Copying ../../build/my_robot_controller/my_robot_controller.egg-info to /home/kaisirius/btp/cav-platoons/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller-0.0.0-py3.10.egg-info
+[0.708s] running install_scripts
+[0.721s] Installing draw_circle script to /home/kaisirius/btp/cav-platoons/install/my_robot_controller/lib/my_robot_controller
+[0.721s] Installing pose_subscriber script to /home/kaisirius/btp/cav-platoons/install/my_robot_controller/lib/my_robot_controller
+[0.721s] Installing test_node script to /home/kaisirius/btp/cav-platoons/install/my_robot_controller/lib/my_robot_controller
+[0.721s] writing list of installed files to '/home/kaisirius/btp/cav-platoons/build/my_robot_controller/install.log'
+[0.740s] Invoked command in '/home/kaisirius/btp/cav-platoons/src/my_robot_controller' returned '0': PYTHONPATH=/home/kaisirius/btp/cav-platoons/build/my_robot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kaisirius/btp/cav-platoons/install/my_robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_robot_controller build --build-base /home/kaisirius/btp/cav-platoons/build/my_robot_controller/build install --record /home/kaisirius/btp/cav-platoons/build/my_robot_controller/install.log --single-version-externally-managed install_data

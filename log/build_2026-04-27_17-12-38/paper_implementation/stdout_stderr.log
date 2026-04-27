@@ -1,0 +1,27 @@
+running egg_info
+writing ../../build/paper_implementation/paper_implementation.egg-info/PKG-INFO
+writing dependency_links to ../../build/paper_implementation/paper_implementation.egg-info/dependency_links.txt
+writing entry points to ../../build/paper_implementation/paper_implementation.egg-info/entry_points.txt
+writing requirements to ../../build/paper_implementation/paper_implementation.egg-info/requires.txt
+writing top-level names to ../../build/paper_implementation/paper_implementation.egg-info/top_level.txt
+reading manifest file '../../build/paper_implementation/paper_implementation.egg-info/SOURCES.txt'
+writing manifest file '../../build/paper_implementation/paper_implementation.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+byte-compiling /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation/collision_node_two_sv_one_moving_ov.py to collision_node_two_sv_one_moving_ov.cpython-310.pyc
+running install_data
+Sorry: IndentationError: unexpected indent (collision_node_two_sv_one_moving_ov.py, line 53)
+running install_egg_info
+removing '/home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/paper_implementation/paper_implementation.egg-info to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation-0.0.0-py3.10.egg-info
+running install_scripts
+Installing collision_node_onesv_onemoving_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+Installing collision_node_onesv_overtake_moving_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+Installing collision_node_onesv_overtake_moving_ov_single_node script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+Installing collision_node_two_sv_one_moving_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+Installing collision_node_two_sv_one_stationary_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+Installing moving_obstacle_straight_driver script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+Installing paper_node script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+writing list of installed files to '/home/kaisirius/btp/cav-platoons/build/paper_implementation/install.log'

@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+1f124831bb82b75013d41359da16d250 CMakeFiles/polygon_plugins_uninstall

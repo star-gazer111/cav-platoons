@@ -1,0 +1,27 @@
+[0.373s] Invoking command in '/home/kaisirius/btp/cav-platoons/src/paper_implementation': PYTHONPATH=/home/kaisirius/btp/cav-platoons/build/paper_implementation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/paper_implementation build --build-base /home/kaisirius/btp/cav-platoons/build/paper_implementation/build install --record /home/kaisirius/btp/cav-platoons/build/paper_implementation/install.log --single-version-externally-managed install_data
+[0.532s] running egg_info
+[0.533s] writing ../../build/paper_implementation/paper_implementation.egg-info/PKG-INFO
+[0.533s] writing dependency_links to ../../build/paper_implementation/paper_implementation.egg-info/dependency_links.txt
+[0.533s] writing entry points to ../../build/paper_implementation/paper_implementation.egg-info/entry_points.txt
+[0.533s] writing requirements to ../../build/paper_implementation/paper_implementation.egg-info/requires.txt
+[0.533s] writing top-level names to ../../build/paper_implementation/paper_implementation.egg-info/top_level.txt
+[0.534s] reading manifest file '../../build/paper_implementation/paper_implementation.egg-info/SOURCES.txt'
+[0.535s] writing manifest file '../../build/paper_implementation/paper_implementation.egg-info/SOURCES.txt'
+[0.535s] running build
+[0.535s] running build_py
+[0.535s] running install
+[0.535s] running install_lib
+[0.537s] running install_data
+[0.537s] running install_egg_info
+[0.538s] removing '/home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation-0.0.0-py3.10.egg-info' (and everything under it)
+[0.538s] Copying ../../build/paper_implementation/paper_implementation.egg-info to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation-0.0.0-py3.10.egg-info
+[0.539s] running install_scripts
+[0.555s] Installing collision_node_onesv_onemoving_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[0.556s] Installing collision_node_onesv_overtake_moving_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[0.556s] Installing collision_node_onesv_overtake_moving_ov_single_node script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[0.556s] Installing collision_node_two_sv_one_moving_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[0.556s] Installing collision_node_two_sv_one_stationary_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[0.556s] Installing moving_obstacle_straight_driver script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[0.556s] Installing paper_node script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[0.556s] writing list of installed files to '/home/kaisirius/btp/cav-platoons/build/paper_implementation/install.log'
+[0.589s] Invoked command in '/home/kaisirius/btp/cav-platoons/src/paper_implementation' returned '0': PYTHONPATH=/home/kaisirius/btp/cav-platoons/build/paper_implementation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/paper_implementation build --build-base /home/kaisirius/btp/cav-platoons/build/paper_implementation/build install --record /home/kaisirius/btp/cav-platoons/build/paper_implementation/install.log --single-version-externally-managed install_data

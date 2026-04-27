@@ -1,0 +1,28 @@
+[30.026s] Invoking command in '/home/kaisirius/btp/cav-platoons/src/paper_implementation': PYTHONPATH=/home/kaisirius/btp/cav-platoons/build/paper_implementation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/paper_implementation build --build-base /home/kaisirius/btp/cav-platoons/build/paper_implementation/build install --record /home/kaisirius/btp/cav-platoons/build/paper_implementation/install.log --single-version-externally-managed install_data
+[30.159s] running egg_info
+[30.160s] writing ../../build/paper_implementation/paper_implementation.egg-info/PKG-INFO
+[30.160s] writing dependency_links to ../../build/paper_implementation/paper_implementation.egg-info/dependency_links.txt
+[30.160s] writing entry points to ../../build/paper_implementation/paper_implementation.egg-info/entry_points.txt
+[30.160s] writing requirements to ../../build/paper_implementation/paper_implementation.egg-info/requires.txt
+[30.160s] writing top-level names to ../../build/paper_implementation/paper_implementation.egg-info/top_level.txt
+[30.161s] reading manifest file '../../build/paper_implementation/paper_implementation.egg-info/SOURCES.txt'
+[30.162s] writing manifest file '../../build/paper_implementation/paper_implementation.egg-info/SOURCES.txt'
+[30.162s] running build
+[30.162s] running build_py
+[30.163s] copying paper_implementation/collision_node_two_sv_one_stationary_ov.py -> /home/kaisirius/btp/cav-platoons/build/paper_implementation/build/lib/paper_implementation
+[30.163s] running install
+[30.163s] running install_lib
+[30.164s] copying /home/kaisirius/btp/cav-platoons/build/paper_implementation/build/lib/paper_implementation/collision_node_two_sv_one_stationary_ov.py -> /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation
+[30.165s] byte-compiling /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation/collision_node_two_sv_one_stationary_ov.py to collision_node_two_sv_one_stationary_ov.cpython-310.pyc
+[30.167s] running install_data
+[30.167s] running install_egg_info
+[30.169s] removing '/home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation-0.0.0-py3.10.egg-info' (and everything under it)
+[30.169s] Copying ../../build/paper_implementation/paper_implementation.egg-info to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation-0.0.0-py3.10.egg-info
+[30.169s] running install_scripts
+[30.182s] Installing collision_node_onesv_onemoving_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[30.182s] Installing collision_node_onesv_overtake_moving_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[30.184s] Installing collision_node_onesv_overtake_moving_ov_single_node script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[30.184s] Installing collision_node_two_sv_one_stationary_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[30.184s] Installing paper_node script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation
+[30.184s] writing list of installed files to '/home/kaisirius/btp/cav-platoons/build/paper_implementation/install.log'
+[30.200s] Invoked command in '/home/kaisirius/btp/cav-platoons/src/paper_implementation' returned '0': PYTHONPATH=/home/kaisirius/btp/cav-platoons/build/paper_implementation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/paper_implementation build --build-base /home/kaisirius/btp/cav-platoons/build/paper_implementation/build install --record /home/kaisirius/btp/cav-platoons/build/paper_implementation/install.log --single-version-externally-managed install_data

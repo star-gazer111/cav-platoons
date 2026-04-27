@@ -1,0 +1,22 @@
+[0.034s] Invoking command in '/home/kaisirius/btp/cav-platoons/build/my_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/kaisirius/btp/cav-platoons/install/paper_implementation:/home/kaisirius/btp/cav-platoons/install/my_robot_controller:/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/kaisirius/btp/cav-platoons/build/my_package -- -j12 -l12
+[0.271s] [100%] Built target my_node
+[0.437s] Invoked command in '/home/kaisirius/btp/cav-platoons/build/my_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/kaisirius/btp/cav-platoons/install/paper_implementation:/home/kaisirius/btp/cav-platoons/install/my_robot_controller:/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/kaisirius/btp/cav-platoons/build/my_package -- -j12 -l12
+[0.445s] Invoking command in '/home/kaisirius/btp/cav-platoons/build/my_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/kaisirius/btp/cav-platoons/install/paper_implementation:/home/kaisirius/btp/cav-platoons/install/my_robot_controller:/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --install /home/kaisirius/btp/cav-platoons/build/my_package
+[0.451s] -- Install configuration: ""
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/lib/my_package/my_node
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/ament_index/resource_index/package_run_dependencies/my_package
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/ament_index/resource_index/parent_prefix_path/my_package
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/environment/ament_prefix_path.sh
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/environment/ament_prefix_path.dsv
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/environment/path.sh
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/environment/path.dsv
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/local_setup.bash
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/local_setup.sh
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/local_setup.zsh
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/local_setup.dsv
+[0.451s] -- Installing: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/package.dsv
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/ament_index/resource_index/packages/my_package
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/cmake/my_packageConfig.cmake
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/cmake/my_packageConfig-version.cmake
+[0.451s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/my_package/share/my_package/package.xml
+[0.458s] Invoked command in '/home/kaisirius/btp/cav-platoons/build/my_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/kaisirius/btp/cav-platoons/install/paper_implementation:/home/kaisirius/btp/cav-platoons/install/my_robot_controller:/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --install /home/kaisirius/btp/cav-platoons/build/my_package

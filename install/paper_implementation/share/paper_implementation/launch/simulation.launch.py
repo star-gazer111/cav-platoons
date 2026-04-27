@@ -80,7 +80,12 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     pkg_path = get_package_share_directory('paper_implementation')
-    turtlebot_model = '/opt/ros/humble/share/turtlebot3_gazebo/models/turtlebot3_burger/model.sdf'
+    turtlebot_model = os.path.join(
+        get_package_share_directory('turtlebot3_gazebo'),
+        'models',
+        'turtlebot3_burger',
+        'model.sdf',
+    )
     
     # 1. Start Gazebo
     world_cmd = IncludeLaunchDescription(

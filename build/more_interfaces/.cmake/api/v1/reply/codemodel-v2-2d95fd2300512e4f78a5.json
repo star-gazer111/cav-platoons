@@ -1,0 +1,242 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-9b7c8bec4002d187d8bd.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				},
+				{
+					"build" : "more_interfaces__py",
+					"jsonFile" : "directory-more_interfaces__py-5d25f962801319a78820.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/kaisirius/btp/cav-platoons/build/more_interfaces/more_interfaces__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "more_interfaces",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_more_interfaces_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_more_interfaces_egg-4a195b2e9013170a1b38.json",
+					"name" : "ament_cmake_python_build_more_interfaces_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_more_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_more_interfaces-e8b8a7d132ea3cfabe9e.json",
+					"name" : "ament_cmake_python_copy_more_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces-796ea1aa3d77046276ef.json",
+					"name" : "more_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__cpp-eac6a520c9837d146abd.json",
+					"name" : "more_interfaces__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "more_interfaces__py::@cb4f9a48d024a8997e2a",
+					"jsonFile" : "target-more_interfaces__py-e95fca4ce2a469398c1d.json",
+					"name" : "more_interfaces__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_generator_c-3d1100fcba1661942dbb.json",
+					"name" : "more_interfaces__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_generator_py-5202f474ac3a64f3f707.json",
+					"name" : "more_interfaces__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_typesupport_c-db7b4e2524049fde4a14.json",
+					"name" : "more_interfaces__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_typesupport_c__pyext-e71f557295fc8be22174.json",
+					"name" : "more_interfaces__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_typesupport_cpp-4edee63c61ecd3be4f60.json",
+					"name" : "more_interfaces__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_typesupport_fastrtps_c-ee0869a2351b38dcd47b.json",
+					"name" : "more_interfaces__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_typesupport_fastrtps_c__pyext-1f85e73d520b59946249.json",
+					"name" : "more_interfaces__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_typesupport_fastrtps_cpp-9e38186ac383fbf5426e.json",
+					"name" : "more_interfaces__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_typesupport_introspection_c-61a309ffa8433316e06d.json",
+					"name" : "more_interfaces__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_typesupport_introspection_c__pyext-fd912cb99c78fdda4840.json",
+					"name" : "more_interfaces__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces__rosidl_typesupport_introspection_cpp-072d7f224ec0d154808e.json",
+					"name" : "more_interfaces__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "more_interfaces_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-more_interfaces_uninstall-447c6a746ce1fac17882.json",
+					"name" : "more_interfaces_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "publish_address_book::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-publish_address_book-90a938e5a76386e64b02.json",
+					"name" : "publish_address_book",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-4bf67319531b9122d7f1.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/kaisirius/btp/cav-platoons/build/more_interfaces",
+		"source" : "/home/kaisirius/btp/cav-platoons/src/more_interfaces"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

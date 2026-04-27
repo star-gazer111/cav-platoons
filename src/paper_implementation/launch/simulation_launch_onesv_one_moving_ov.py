@@ -77,6 +77,12 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     pkg_path = get_package_share_directory('paper_implementation')
+    turtlebot_model = os.path.join(
+        get_package_share_directory('turtlebot3_gazebo'),
+        'models',
+        'turtlebot3_burger',
+        'model.sdf',
+    )
     
     # 1. Start Gazebo
     world_cmd = IncludeLaunchDescription(
@@ -90,7 +96,7 @@ def generate_launch_description():
         package='gazebo_ros',
         executable='spawn_entity.py',
         arguments=['-entity', 'burger', 
-                   '-file', '/opt/ros/humble/share/turtlebot3_gazebo/models/turtlebot3_burger/model.sdf',
+                   '-file', turtlebot_model,
                    '-x', '0.0', '-y', '0.0', '-z', '0.01'],
         output='screen'
     )
@@ -113,10 +119,10 @@ def generate_launch_description():
     )
 
     # 5. START YOUR NODE (The Brain)
-    # This runs the paper_node automatically
+    # This runs the one-SV / one-moving-OV collision avoidance node automatically
     run_paper_node = Node(
         package='paper_implementation',
-        executable='paper_node',
+        executable='collision_node_onesv_onemoving_ov',
         output='screen'
     )
 
@@ -135,5 +141,5 @@ def generate_launch_description():
         spawn_turtlebot,
         spawn_obstacle,
         move_obstacle_cmd,
-        delayed_node_start  # Contains the logic to run paper_node
+        delayed_node_start
     ])

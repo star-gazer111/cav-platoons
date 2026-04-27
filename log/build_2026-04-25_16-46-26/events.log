@@ -1,0 +1,338 @@
+[0.000000] (-) TimerEvent: {}
+[0.000058] (-) JobUnselected: {'identifier': 'more_interfaces'}
+[0.000083] (-) JobUnselected: {'identifier': 'my_package'}
+[0.000100] (-) JobUnselected: {'identifier': 'my_robot_controller'}
+[0.000116] (-) JobUnselected: {'identifier': 'polygon_base'}
+[0.000131] (-) JobUnselected: {'identifier': 'polygon_plugins'}
+[0.000148] (paper_implementation) JobQueued: {'identifier': 'paper_implementation', 'dependencies': OrderedDict()}
+[0.000167] (paper_implementation) JobStarted: {'identifier': 'paper_implementation'}
+[0.099443] (-) TimerEvent: {}
+[0.199718] (-) TimerEvent: {}
+[0.299962] (-) TimerEvent: {}
+[0.360179] (paper_implementation) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/paper_implementation', 'build', '--build-base', '/home/kaisirius/btp/cav-platoons/build/paper_implementation/build', 'install', '--record', '/home/kaisirius/btp/cav-platoons/build/paper_implementation/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/kaisirius/btp/cav-platoons/src/paper_implementation', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'VSCODE_CWD': '/home/kaisirius', 'VSCODE_ESM_ENTRYPOINT': 'vs/workbench/api/node/extensionHostProcess', 'CODEX_CI': '1', 'LANGUAGE': 'en_IN:en', 'USER': 'kaisirius', 'SNAP_COMMON': '/var/snap/code/common', 'CODEX_INTERNAL_ORIGINATOR_OVERRIDE': 'codex_vscode', 'VSCODE_NLS_CONFIG': '{"userLocale":"en-gb","osLocale":"en-in","resolvedLanguage":"en","defaultMessagesFile":"/snap/code/223/usr/share/code/resources/app/out/nls.messages.json","locale":"en-gb","availableLanguages":{}}', 'FONTCONFIG_PATH': '/etc/fonts', 'GIO_MODULE_DIR': '/home/kaisirius/snap/code/common/.cache/gio-modules', 'VSCODE_HANDLES_UNCAUGHT_ERRORS': 'true', 'XDG_SESSION_TYPE': 'x11', 'DEBUG': 'release', 'SNAP_UID': '1000', 'SHLVL': '0', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/kaisirius', 'CHROME_DESKTOP': 'code.desktop', 'SNAP_LIBRARY_PATH': '/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32', 'DESKTOP_SESSION': 'ubuntu', 'SNAP_USER_DATA': '/home/kaisirius/snap/code/223', 'GTK_PATH': '/snap/code/223/usr/lib/x86_64-linux-gnu/gtk-3.0', 'VSCODE_IPC_HOOK': '/run/user/1000/vscode-197cb73f-1.10-main.sock', 'GTK_IM_MODULE_FILE': '/home/kaisirius/snap/code/common/.cache/immodules/immodules.cache', 'GIO_LAUNCHED_DESKTOP_FILE': '/var/lib/snapd/desktop/applications/code_code.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'PAGER': 'cat', 'MANAGERPID': '1733', 'LC_CTYPE': 'C.UTF-8', 'SYSTEMD_EXEC_PID': '2060', 'NO_COLOR': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'SNAP_REVISION': '223', 'COLORTERM': '', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '3140', 'VSCODE_CRASH_REPORTER_PROCESS_TYPE': 'extensionHost', 'COLCON_PREFIX_PATH': '/home/kaisirius/ros2_ws/install', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'ibus', 'LOGNAME': 'kaisirius', 'SNAP_CONTEXT': 'vnHRvZuUSksJRbjRcsZbBzBOslBxj-tTL8X0wGc0AzL2Wby7WDiU', 'JOURNAL_STREAM': '8:16885', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_CONFIG_DIRS_VSCODE_SNAP_ORIG': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_SESSION_CLASS': 'user', 'SNAP_VERSION': '591199df', 'XDG_DATA_DIRS_VSCODE_SNAP_ORIG': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'RUST_LOG': 'warn', 'USERNAME': 'kaisirius', 'TERM': 'dumb', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'SNAP_INSTANCE_NAME': 'code', 'FC_FONTATIONS': '1', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/home/kaisirius/.codex/tmp/arg0/codex-arg0t72UJe:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/kaisirius/.vscode/extensions/openai.chatgpt-26.422.21459-linux-x64/bin/linux-x86_64', 'SESSION_MANAGER': 'local/kaisirius-Victus-by-HP-Gaming-Laptop-15-fa0xxx:@/tmp/.ICE-unix/2032,unix/kaisirius-Victus-by-HP-Gaming-Laptop-15-fa0xxx:/tmp/.ICE-unix/2032', 'GTK_EXE_PREFIX': '/snap/code/223/usr', 'INVOCATION_ID': '4f9707b226634dab8db12be9ede1662c', 'XDG_MENU_PREFIX': 'gnome-', 'SNAP_DATA': '/var/snap/code/223', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'DISPLAY': ':1', 'LOCPATH': '/snap/code/223/usr/lib/locale', 'CODEX_SANDBOX_NETWORK_DISABLED': '1', 'LANG': 'C.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XDG_DATA_HOME': '/home/kaisirius/snap/code/223/.local/share', 'XMODIFIERS': '@im=ibus', 'GH_PAGER': 'cat', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SNAP_USER_COMMON': '/home/kaisirius/snap/code/common', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'GSETTINGS_SCHEMA_DIR': '/home/kaisirius/snap/code/223/.local/share/glib-2.0/schemas', 'SNAP_ARCH': 'amd64', 'AMENT_PREFIX_PATH': '/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble', 'SNAP_COOKIE': 'vnHRvZuUSksJRbjRcsZbBzBOslBxj-tTL8X0wGc0AzL2Wby7WDiU', 'SHELL': '/bin/bash', 'GDK_PIXBUF_MODULEDIR': '/snap/code/223/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders', 'QT_ACCESSIBILITY': '1', 'ELECTRON_RUN_AS_NODE': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'SNAP_NAME': 'code', 'FONTCONFIG_FILE': '/etc/fonts/fonts.conf', 'CODEX_THREAD_ID': '019dc456-2567-7c10-a960-71e093181d61', 'GDK_PIXBUF_MODULE_FILE': '/home/kaisirius/snap/code/common/.cache/gdk-pixbuf-loaders.cache', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'SNAP_LAUNCHER_ARCH_TRIPLET': 'x86_64-linux-gnu', 'GIT_PAGER': 'cat', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/kaisirius/btp/cav-platoons/build/paper_implementation', 'VSCODE_CLI': '1', 'LC_ALL': 'C.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'SNAP_REAL_HOME': '/home/kaisirius', 'VSCODE_CODE_CACHE_PATH': '/home/kaisirius/.config/Code/CachedData/591199df409fbf59b4b52d5ad4ee0470152a9b31', 'XDG_DATA_DIRS': '/home/kaisirius/snap/code/223/.local/share:/home/kaisirius/snap/code/223:/snap/code/223/usr/share:/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'SNAP_EUID': '1000', 'PYTHONPATH': '/home/kaisirius/btp/cav-platoons/build/paper_implementation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages:/home/kaisirius/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'SNAP': '/snap/code/223', 'COLCON': '1', 'ELECTRON_NO_ATTACH_CONSOLE': '1', 'VSCODE_PID': '3183'}, 'shell': False}
+[0.400075] (-) TimerEvent: {}
+[0.488625] (paper_implementation) StdoutLine: {'line': b'running egg_info\n'}
+[0.489042] (paper_implementation) StdoutLine: {'line': b'writing ../../build/paper_implementation/paper_implementation.egg-info/PKG-INFO\n'}
+[0.489188] (paper_implementation) StdoutLine: {'line': b'writing dependency_links to ../../build/paper_implementation/paper_implementation.egg-info/dependency_links.txt\n'}
+[0.489294] (paper_implementation) StdoutLine: {'line': b'writing entry points to ../../build/paper_implementation/paper_implementation.egg-info/entry_points.txt\n'}
+[0.489352] (paper_implementation) StdoutLine: {'line': b'writing requirements to ../../build/paper_implementation/paper_implementation.egg-info/requires.txt\n'}
+[0.489378] (paper_implementation) StdoutLine: {'line': b'writing top-level names to ../../build/paper_implementation/paper_implementation.egg-info/top_level.txt\n'}
+[0.490483] (paper_implementation) StdoutLine: {'line': b"reading manifest file '../../build/paper_implementation/paper_implementation.egg-info/SOURCES.txt'\n"}
+[0.491204] (paper_implementation) StdoutLine: {'line': b"writing manifest file '../../build/paper_implementation/paper_implementation.egg-info/SOURCES.txt'\n"}
+[0.491233] (paper_implementation) StdoutLine: {'line': b'running build\n'}
+[0.491272] (paper_implementation) StdoutLine: {'line': b'running build_py\n'}
+[0.491468] (paper_implementation) StdoutLine: {'line': b'copying paper_implementation/collision_node_two_sv_one_stationary_ov.py -> /home/kaisirius/btp/cav-platoons/build/paper_implementation/build/lib/paper_implementation\n'}
+[0.491685] (paper_implementation) StdoutLine: {'line': b'running install\n'}
+[0.491796] (paper_implementation) StdoutLine: {'line': b'running install_lib\n'}
+[0.492317] (paper_implementation) StdoutLine: {'line': b'copying /home/kaisirius/btp/cav-platoons/build/paper_implementation/build/lib/paper_implementation/collision_node_two_sv_one_stationary_ov.py -> /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation\n'}
+[0.492768] (paper_implementation) StdoutLine: {'line': b'byte-compiling /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation/collision_node_two_sv_one_stationary_ov.py to collision_node_two_sv_one_stationary_ov.cpython-310.pyc\n'}
+[0.494319] (paper_implementation) StdoutLine: {'line': b'running install_data\n'}
+[0.494430] (paper_implementation) StdoutLine: {'line': b'copying launch/twosv_one_stationary_ov.launch.py -> /home/kaisirius/btp/cav-platoons/install/paper_implementation/share/paper_implementation/launch\n'}
+[0.494499] (paper_implementation) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.495668] (paper_implementation) StdoutLine: {'line': b"removing '/home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[0.495927] (paper_implementation) StdoutLine: {'line': b'Copying ../../build/paper_implementation/paper_implementation.egg-info to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/python3.10/site-packages/paper_implementation-0.0.0-py3.10.egg-info\n'}
+[0.496348] (paper_implementation) StdoutLine: {'line': b'running install_scripts\n'}
+[0.500169] (-) TimerEvent: {}
+[0.510031] (paper_implementation) StdoutLine: {'line': b'Installing collision_node_onesv_onemoving_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation\n'}
+[0.510177] (paper_implementation) StdoutLine: {'line': b'Installing collision_node_onesv_overtake_moving_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation\n'}
+[0.510209] (paper_implementation) StdoutLine: {'line': b'Installing collision_node_onesv_overtake_moving_ov_single_node script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation\n'}
+[0.510239] (paper_implementation) StdoutLine: {'line': b'Installing collision_node_two_sv_one_stationary_ov script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation\n'}
+[0.510296] (paper_implementation) StdoutLine: {'line': b'Installing paper_node script to /home/kaisirius/btp/cav-platoons/install/paper_implementation/lib/paper_implementation\n'}
+[0.510446] (paper_implementation) StdoutLine: {'line': b"writing list of installed files to '/home/kaisirius/btp/cav-platoons/build/paper_implementation/install.log'\n"}
+[0.600380] (-) TimerEvent: {}
+[0.700685] (-) TimerEvent: {}
+[0.801110] (-) TimerEvent: {}
+[0.901508] (-) TimerEvent: {}
+[1.001950] (-) TimerEvent: {}
+[1.102471] (-) TimerEvent: {}
+[1.202794] (-) TimerEvent: {}
+[1.303291] (-) TimerEvent: {}
+[1.403698] (-) TimerEvent: {}
+[1.504139] (-) TimerEvent: {}
+[1.604649] (-) TimerEvent: {}
+[1.705023] (-) TimerEvent: {}
+[1.805333] (-) TimerEvent: {}
+[1.905591] (-) TimerEvent: {}
+[2.005894] (-) TimerEvent: {}
+[2.106170] (-) TimerEvent: {}
+[2.206390] (-) TimerEvent: {}
+[2.306609] (-) TimerEvent: {}
+[2.406827] (-) TimerEvent: {}
+[2.507048] (-) TimerEvent: {}
+[2.607283] (-) TimerEvent: {}
+[2.707621] (-) TimerEvent: {}
+[2.808090] (-) TimerEvent: {}
+[2.908847] (-) TimerEvent: {}
+[3.009188] (-) TimerEvent: {}
+[3.109620] (-) TimerEvent: {}
+[3.210020] (-) TimerEvent: {}
+[3.310500] (-) TimerEvent: {}
+[3.410986] (-) TimerEvent: {}
+[3.511482] (-) TimerEvent: {}
+[3.611787] (-) TimerEvent: {}
+[3.712193] (-) TimerEvent: {}
+[3.812793] (-) TimerEvent: {}
+[3.913293] (-) TimerEvent: {}
+[4.013952] (-) TimerEvent: {}
+[4.114401] (-) TimerEvent: {}
+[4.214689] (-) TimerEvent: {}
+[4.315146] (-) TimerEvent: {}
+[4.415669] (-) TimerEvent: {}
+[4.515996] (-) TimerEvent: {}
+[4.616524] (-) TimerEvent: {}
+[4.716927] (-) TimerEvent: {}
+[4.817271] (-) TimerEvent: {}
+[4.917668] (-) TimerEvent: {}
+[5.018001] (-) TimerEvent: {}
+[5.118476] (-) TimerEvent: {}
+[5.218872] (-) TimerEvent: {}
+[5.319418] (-) TimerEvent: {}
+[5.419879] (-) TimerEvent: {}
+[5.520383] (-) TimerEvent: {}
+[5.620845] (-) TimerEvent: {}
+[5.721357] (-) TimerEvent: {}
+[5.821852] (-) TimerEvent: {}
+[5.922283] (-) TimerEvent: {}
+[6.022574] (-) TimerEvent: {}
+[6.122967] (-) TimerEvent: {}
+[6.223370] (-) TimerEvent: {}
+[6.323964] (-) TimerEvent: {}
+[6.424524] (-) TimerEvent: {}
+[6.524899] (-) TimerEvent: {}
+[6.625321] (-) TimerEvent: {}
+[6.725793] (-) TimerEvent: {}
+[6.826395] (-) TimerEvent: {}
+[6.926926] (-) TimerEvent: {}
+[7.027454] (-) TimerEvent: {}
+[7.127843] (-) TimerEvent: {}
+[7.228326] (-) TimerEvent: {}
+[7.328755] (-) TimerEvent: {}
+[7.429136] (-) TimerEvent: {}
+[7.529508] (-) TimerEvent: {}
+[7.629942] (-) TimerEvent: {}
+[7.730296] (-) TimerEvent: {}
+[7.830629] (-) TimerEvent: {}
+[7.931039] (-) TimerEvent: {}
+[8.031522] (-) TimerEvent: {}
+[8.131864] (-) TimerEvent: {}
+[8.232359] (-) TimerEvent: {}
+[8.332712] (-) TimerEvent: {}
+[8.433122] (-) TimerEvent: {}
+[8.533724] (-) TimerEvent: {}
+[8.634174] (-) TimerEvent: {}
+[8.734592] (-) TimerEvent: {}
+[8.834926] (-) TimerEvent: {}
+[8.935416] (-) TimerEvent: {}
+[9.035791] (-) TimerEvent: {}
+[9.136379] (-) TimerEvent: {}
+[9.236856] (-) TimerEvent: {}
+[9.337328] (-) TimerEvent: {}
+[9.437796] (-) TimerEvent: {}
+[9.538269] (-) TimerEvent: {}
+[9.638536] (-) TimerEvent: {}
+[9.738785] (-) TimerEvent: {}
+[9.839290] (-) TimerEvent: {}
+[9.939704] (-) TimerEvent: {}
+[10.040121] (-) TimerEvent: {}
+[10.140307] (-) TimerEvent: {}
+[10.240683] (-) TimerEvent: {}
+[10.341083] (-) TimerEvent: {}
+[10.441550] (-) TimerEvent: {}
+[10.541990] (-) TimerEvent: {}
+[10.642498] (-) TimerEvent: {}
+[10.742798] (-) TimerEvent: {}
+[10.843146] (-) TimerEvent: {}
+[10.943569] (-) TimerEvent: {}
+[11.043884] (-) TimerEvent: {}
+[11.144363] (-) TimerEvent: {}
+[11.244797] (-) TimerEvent: {}
+[11.345317] (-) TimerEvent: {}
+[11.445578] (-) TimerEvent: {}
+[11.545921] (-) TimerEvent: {}
+[11.646356] (-) TimerEvent: {}
+[11.746635] (-) TimerEvent: {}
+[11.846910] (-) TimerEvent: {}
+[11.947377] (-) TimerEvent: {}
+[12.047865] (-) TimerEvent: {}
+[12.148216] (-) TimerEvent: {}
+[12.248730] (-) TimerEvent: {}
+[12.349234] (-) TimerEvent: {}
+[12.449749] (-) TimerEvent: {}
+[12.550187] (-) TimerEvent: {}
+[12.650748] (-) TimerEvent: {}
+[12.751206] (-) TimerEvent: {}
+[12.851690] (-) TimerEvent: {}
+[12.952041] (-) TimerEvent: {}
+[13.052493] (-) TimerEvent: {}
+[13.153002] (-) TimerEvent: {}
+[13.253403] (-) TimerEvent: {}
+[13.353890] (-) TimerEvent: {}
+[13.454438] (-) TimerEvent: {}
+[13.554937] (-) TimerEvent: {}
+[13.655396] (-) TimerEvent: {}
+[13.755873] (-) TimerEvent: {}
+[13.856200] (-) TimerEvent: {}
+[13.956727] (-) TimerEvent: {}
+[14.057030] (-) TimerEvent: {}
+[14.157480] (-) TimerEvent: {}
+[14.257802] (-) TimerEvent: {}
+[14.358332] (-) TimerEvent: {}
+[14.458743] (-) TimerEvent: {}
+[14.559093] (-) TimerEvent: {}
+[14.659552] (-) TimerEvent: {}
+[14.759913] (-) TimerEvent: {}
+[14.860465] (-) TimerEvent: {}
+[14.960874] (-) TimerEvent: {}
+[15.061429] (-) TimerEvent: {}
+[15.161860] (-) TimerEvent: {}
+[15.262387] (-) TimerEvent: {}
+[15.362699] (-) TimerEvent: {}
+[15.463133] (-) TimerEvent: {}
+[15.563449] (-) TimerEvent: {}
+[15.663882] (-) TimerEvent: {}
+[15.764358] (-) TimerEvent: {}
+[15.864685] (-) TimerEvent: {}
+[15.965155] (-) TimerEvent: {}
+[16.065517] (-) TimerEvent: {}
+[16.165884] (-) TimerEvent: {}
+[16.266295] (-) TimerEvent: {}
+[16.366831] (-) TimerEvent: {}
+[16.467162] (-) TimerEvent: {}
+[16.567669] (-) TimerEvent: {}
+[16.667963] (-) TimerEvent: {}
+[16.768219] (-) TimerEvent: {}
+[16.868574] (-) TimerEvent: {}
+[16.969035] (-) TimerEvent: {}
+[17.069444] (-) TimerEvent: {}
+[17.169818] (-) TimerEvent: {}
+[17.270194] (-) TimerEvent: {}
+[17.370500] (-) TimerEvent: {}
+[17.470803] (-) TimerEvent: {}
+[17.571041] (-) TimerEvent: {}
+[17.671493] (-) TimerEvent: {}
+[17.771918] (-) TimerEvent: {}
+[17.872411] (-) TimerEvent: {}
+[17.972812] (-) TimerEvent: {}
+[18.073085] (-) TimerEvent: {}
+[18.173467] (-) TimerEvent: {}
+[18.273892] (-) TimerEvent: {}
+[18.374379] (-) TimerEvent: {}
+[18.474833] (-) TimerEvent: {}
+[18.575309] (-) TimerEvent: {}
+[18.675731] (-) TimerEvent: {}
+[18.776212] (-) TimerEvent: {}
+[18.876555] (-) TimerEvent: {}
+[18.977050] (-) TimerEvent: {}
+[19.077411] (-) TimerEvent: {}
+[19.177718] (-) TimerEvent: {}
+[19.278125] (-) TimerEvent: {}
+[19.378622] (-) TimerEvent: {}
+[19.479058] (-) TimerEvent: {}
+[19.579519] (-) TimerEvent: {}
+[19.680002] (-) TimerEvent: {}
+[19.780472] (-) TimerEvent: {}
+[19.880922] (-) TimerEvent: {}
+[19.981269] (-) TimerEvent: {}
+[20.081641] (-) TimerEvent: {}
+[20.181926] (-) TimerEvent: {}
+[20.282367] (-) TimerEvent: {}
+[20.382667] (-) TimerEvent: {}
+[20.483172] (-) TimerEvent: {}
+[20.583598] (-) TimerEvent: {}
+[20.684060] (-) TimerEvent: {}
+[20.784536] (-) TimerEvent: {}
+[20.884887] (-) TimerEvent: {}
+[20.985437] (-) TimerEvent: {}
+[21.085780] (-) TimerEvent: {}
+[21.186293] (-) TimerEvent: {}
+[21.286647] (-) TimerEvent: {}
+[21.387099] (-) TimerEvent: {}
+[21.487369] (-) TimerEvent: {}
+[21.587822] (-) TimerEvent: {}
+[21.688304] (-) TimerEvent: {}
+[21.788668] (-) TimerEvent: {}
+[21.889002] (-) TimerEvent: {}
+[21.989477] (-) TimerEvent: {}
+[22.089772] (-) TimerEvent: {}
+[22.190268] (-) TimerEvent: {}
+[22.290770] (-) TimerEvent: {}
+[22.391270] (-) TimerEvent: {}
+[22.491743] (-) TimerEvent: {}
+[22.592147] (-) TimerEvent: {}
+[22.692636] (-) TimerEvent: {}
+[22.793087] (-) TimerEvent: {}
+[22.893536] (-) TimerEvent: {}
+[22.993831] (-) TimerEvent: {}
+[23.094226] (-) TimerEvent: {}
+[23.194564] (-) TimerEvent: {}
+[23.295047] (-) TimerEvent: {}
+[23.395477] (-) TimerEvent: {}
+[23.495944] (-) TimerEvent: {}
+[23.596436] (-) TimerEvent: {}
+[23.696892] (-) TimerEvent: {}
+[23.797421] (-) TimerEvent: {}
+[23.897800] (-) TimerEvent: {}
+[23.998381] (-) TimerEvent: {}
+[24.098668] (-) TimerEvent: {}
+[24.199094] (-) TimerEvent: {}
+[24.299499] (-) TimerEvent: {}
+[24.399875] (-) TimerEvent: {}
+[24.500320] (-) TimerEvent: {}
+[24.600692] (-) TimerEvent: {}
+[24.701201] (-) TimerEvent: {}
+[24.801541] (-) TimerEvent: {}
+[24.902021] (-) TimerEvent: {}
+[25.002546] (-) TimerEvent: {}
+[25.103048] (-) TimerEvent: {}
+[25.203472] (-) TimerEvent: {}
+[25.303952] (-) TimerEvent: {}
+[25.404295] (-) TimerEvent: {}
+[25.504726] (-) TimerEvent: {}
+[25.605180] (-) TimerEvent: {}
+[25.705739] (-) TimerEvent: {}
+[25.806181] (-) TimerEvent: {}
+[25.906735] (-) TimerEvent: {}
+[26.007129] (-) TimerEvent: {}
+[26.107441] (-) TimerEvent: {}
+[26.207902] (-) TimerEvent: {}
+[26.308465] (-) TimerEvent: {}
+[26.408921] (-) TimerEvent: {}
+[26.509565] (-) TimerEvent: {}
+[26.610016] (-) TimerEvent: {}
+[26.710422] (-) TimerEvent: {}
+[26.810868] (-) TimerEvent: {}
+[26.911344] (-) TimerEvent: {}
+[27.011847] (-) TimerEvent: {}
+[27.112325] (-) TimerEvent: {}
+[27.212847] (-) TimerEvent: {}
+[27.313165] (-) TimerEvent: {}
+[27.413633] (-) TimerEvent: {}
+[27.514100] (-) TimerEvent: {}
+[27.614613] (-) TimerEvent: {}
+[27.714992] (-) TimerEvent: {}
+[27.815507] (-) TimerEvent: {}
+[27.915787] (-) TimerEvent: {}
+[28.016054] (-) TimerEvent: {}
+[28.116481] (-) TimerEvent: {}
+[28.216806] (-) TimerEvent: {}
+[28.317128] (-) TimerEvent: {}
+[28.417440] (-) TimerEvent: {}
+[28.517809] (-) TimerEvent: {}
+[28.618171] (-) TimerEvent: {}
+[28.718546] (-) TimerEvent: {}
+[28.818923] (-) TimerEvent: {}
+[28.919281] (-) TimerEvent: {}
+[29.019614] (-) TimerEvent: {}
+[29.120001] (-) TimerEvent: {}
+[29.220371] (-) TimerEvent: {}
+[29.320721] (-) TimerEvent: {}
+[29.421019] (-) TimerEvent: {}
+[29.521266] (-) TimerEvent: {}
+[29.621491] (-) TimerEvent: {}
+[29.721843] (-) TimerEvent: {}
+[29.822403] (-) TimerEvent: {}
+[29.923133] (-) TimerEvent: {}
+[30.023483] (-) TimerEvent: {}
+[30.030148] (paper_implementation) CommandEnded: {'returncode': 0}
+[30.052824] (paper_implementation) JobEnded: {'identifier': 'paper_implementation', 'rc': 0}
+[30.053159] (-) EventReactorShutdown: {}

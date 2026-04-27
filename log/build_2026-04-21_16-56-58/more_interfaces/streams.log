@@ -1,0 +1,248 @@
+[0.021s] Invoking command in '/home/kaisirius/btp/cav-platoons/build/more_interfaces': CMAKE_PREFIX_PATH=/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake /home/kaisirius/btp/cav-platoons/src/more_interfaces -DCMAKE_INSTALL_PREFIX=/home/kaisirius/btp/cav-platoons/install/more_interfaces
+[0.213s] -- The C compiler identification is GNU 11.4.0
+[0.213s] -- The CXX compiler identification is GNU 11.4.0
+[0.213s] -- Detecting C compiler ABI info
+[0.213s] -- Detecting C compiler ABI info - done
+[0.213s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.213s] -- Detecting C compile features
+[0.213s] -- Detecting C compile features - done
+[0.213s] -- Detecting CXX compiler ABI info
+[0.275s] -- Detecting CXX compiler ABI info - done
+[0.281s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.282s] -- Detecting CXX compile features
+[0.282s] -- Detecting CXX compile features - done
+[0.283s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.416s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.483s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.559s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.561s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.565s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.596s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.793s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[0.976s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.166s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.180s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[1.181s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.198s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[1.198s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.198s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.198s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[1.222s] -- Found PythonExtra: .so  
+[1.245s] -- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)
+[1.273s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.274s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.335s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.352s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.383s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.387s] -- Looking for pthread.h
+[1.449s] -- Looking for pthread.h - found
+[1.449s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.511s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.513s] -- Found Threads: TRUE  
+[1.560s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.561s] -- Configured cppcheck include dirs: 
+[1.561s] -- Configured cppcheck exclude dirs and/or files: 
+[1.561s] -- Added test 'lint_cmake' to check CMake code style
+[1.562s] -- Added test 'uncrustify' to check C / C++ code style
+[1.562s] -- Configured uncrustify additional arguments: 
+[1.563s] -- Added test 'xmllint' to check XML markup files
+[1.566s] -- Configuring done
+[1.587s] -- Generating done
+[1.595s] -- Build files have been written to: /home/kaisirius/btp/cav-platoons/build/more_interfaces
+[1.602s] Invoked command in '/home/kaisirius/btp/cav-platoons/build/more_interfaces' returned '0': CMAKE_PREFIX_PATH=/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake /home/kaisirius/btp/cav-platoons/src/more_interfaces -DCMAKE_INSTALL_PREFIX=/home/kaisirius/btp/cav-platoons/install/more_interfaces
+[1.604s] Invoking command in '/home/kaisirius/btp/cav-platoons/build/more_interfaces': CMAKE_PREFIX_PATH=/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/kaisirius/btp/cav-platoons/build/more_interfaces -- -j12 -l12
+[1.640s] [  3%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.649s] [  6%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[1.662s] [  6%] Built target ament_cmake_python_copy_more_interfaces
+[1.845s] running egg_info
+[1.845s] creating more_interfaces.egg-info
+[1.845s] writing more_interfaces.egg-info/PKG-INFO
+[1.846s] writing dependency_links to more_interfaces.egg-info/dependency_links.txt
+[1.846s] writing top-level names to more_interfaces.egg-info/top_level.txt
+[1.846s] writing manifest file 'more_interfaces.egg-info/SOURCES.txt'
+[1.847s] [  9%] [32mBuilding C object CMakeFiles/more_interfaces__rosidl_generator_c.dir/rosidl_generator_c/more_interfaces/msg/detail/address_book__functions.c.o[0m
+[1.847s] reading manifest file 'more_interfaces.egg-info/SOURCES.txt'
+[1.847s] writing manifest file 'more_interfaces.egg-info/SOURCES.txt'
+[1.849s] [  9%] Built target more_interfaces__cpp
+[1.858s] [ 12%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[1.860s] [ 15%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[1.861s] [ 18%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[1.877s] [ 18%] Built target ament_cmake_python_build_more_interfaces_egg
+[1.887s] [ 21%] [32m[1mLinking C shared library libmore_interfaces__rosidl_generator_c.so[0m
+[1.929s] [ 21%] Built target more_interfaces__rosidl_generator_c
+[1.939s] [ 24%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[1.940s] [ 27%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[1.941s] [ 30%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[2.055s] [ 33%] [32mBuilding CXX object CMakeFiles/more_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/more_interfaces/msg/address_book__type_support.cpp.o[0m
+[2.063s] [ 36%] [32mBuilding CXX object CMakeFiles/more_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/more_interfaces/msg/detail/address_book__type_support.cpp.o[0m
+[2.154s] [ 39%] [32mBuilding CXX object CMakeFiles/more_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/more_interfaces/msg/detail/address_book__type_support_c.cpp.o[0m
+[2.162s] [ 42%] [32mBuilding CXX object CMakeFiles/more_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/more_interfaces/msg/detail/dds_fastrtps/address_book__type_support.cpp.o[0m
+[2.238s] [ 45%] [32mBuilding CXX object CMakeFiles/more_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/more_interfaces/msg/address_book__type_support.cpp.o[0m
+[2.258s] [ 48%] [32m[1mLinking CXX shared library libmore_interfaces__rosidl_typesupport_cpp.so[0m
+[2.262s] [ 51%] [32m[1mLinking CXX shared library libmore_interfaces__rosidl_typesupport_c.so[0m
+[2.264s] [ 54%] [32mBuilding C object CMakeFiles/more_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/more_interfaces/msg/detail/address_book__type_support.c.o[0m
+[2.289s] [ 57%] [32m[1mLinking C shared library libmore_interfaces__rosidl_typesupport_introspection_c.so[0m
+[2.292s] [ 57%] Built target more_interfaces__rosidl_typesupport_c
+[2.303s] [ 57%] Built target more_interfaces__rosidl_typesupport_cpp
+[2.320s] [ 57%] Built target more_interfaces__rosidl_typesupport_introspection_c
+[2.330s] [ 60%] [32mBuilding CXX object CMakeFiles/publish_address_book.dir/src/publish_address_book.cpp.o[0m
+[2.358s] [ 63%] [32m[1mLinking CXX shared library libmore_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[2.409s] [ 66%] [32m[1mLinking CXX shared library libmore_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[2.412s] [ 66%] Built target more_interfaces__rosidl_typesupport_introspection_cpp
+[2.471s] [ 66%] Built target more_interfaces__rosidl_typesupport_fastrtps_c
+[2.559s] [ 69%] [32m[1mLinking CXX shared library libmore_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.620s] [ 69%] Built target more_interfaces__rosidl_typesupport_fastrtps_cpp
+[2.638s] [ 69%] Built target more_interfaces
+[2.658s] [ 72%] [34m[1mGenerating Python code for ROS interfaces[0m
+[2.873s] [ 72%] Built target more_interfaces__py
+[2.889s] [ 75%] [32mBuilding C object CMakeFiles/more_interfaces__rosidl_generator_py.dir/rosidl_generator_py/more_interfaces/msg/_address_book_s.c.o[0m
+[2.981s] [ 78%] [32m[1mLinking C shared library rosidl_generator_py/more_interfaces/libmore_interfaces__rosidl_generator_py.so[0m
+[3.014s] [ 78%] Built target more_interfaces__rosidl_generator_py
+[3.036s] [ 81%] [32mBuilding C object CMakeFiles/more_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/more_interfaces/_more_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[3.040s] [ 84%] [32mBuilding C object CMakeFiles/more_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/more_interfaces/_more_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[3.040s] [ 87%] [32mBuilding C object CMakeFiles/more_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/more_interfaces/_more_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[3.112s] [ 93%] [32m[1mLinking C shared library rosidl_generator_py/more_interfaces/more_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.112s] [ 93%] [32m[1mLinking C shared library rosidl_generator_py/more_interfaces/more_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.114s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/more_interfaces/more_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.142s] [ 96%] Built target more_interfaces__rosidl_typesupport_c__pyext
+[3.151s] [ 96%] Built target more_interfaces__rosidl_typesupport_introspection_c__pyext
+[3.151s] [ 96%] Built target more_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[5.497s] [100%] [32m[1mLinking CXX executable publish_address_book[0m
+[5.627s] [100%] Built target publish_address_book
+[5.636s] Invoked command in '/home/kaisirius/btp/cav-platoons/build/more_interfaces' returned '0': CMAKE_PREFIX_PATH=/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/kaisirius/btp/cav-platoons/build/more_interfaces -- -j12 -l12
+[5.638s] Invoking command in '/home/kaisirius/btp/cav-platoons/build/more_interfaces': CMAKE_PREFIX_PATH=/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --install /home/kaisirius/btp/cav-platoons/build/more_interfaces
+[5.643s] -- Install configuration: ""
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/ament_index/resource_index/rosidl_interfaces/more_interfaces
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__struct.h
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__functions.h
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__type_support.h
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__functions.c
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/address_book.h
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/rosidl_generator_c__visibility_control.h
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/environment/library_path.sh
+[5.643s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/environment/library_path.dsv
+[5.644s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_generator_c.so
+[5.644s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_generator_c.so" to ""
+[5.644s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces
+[5.644s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg
+[5.644s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[5.644s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail
+[5.644s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__rosidl_typesupport_fastrtps_c.h
+[5.644s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_fastrtps_c.so
+[5.644s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[5.644s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces
+[5.644s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg
+[5.644s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail
+[5.644s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__rosidl_typesupport_introspection_c.h
+[5.644s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__type_support.c
+[5.644s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[5.645s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_introspection_c.so
+[5.645s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[5.645s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_c.so
+[5.645s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_c.so" to ""
+[5.645s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces
+[5.645s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg
+[5.645s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/address_book.hpp
+[5.645s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail
+[5.645s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__builder.hpp
+[5.645s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__struct.hpp
+[5.645s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__type_support.hpp
+[5.645s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__traits.hpp
+[5.645s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+[5.645s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces
+[5.645s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg
+[5.646s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[5.646s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail
+[5.646s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/dds_fastrtps
+[5.646s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__rosidl_typesupport_fastrtps_cpp.hpp
+[5.646s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[5.646s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[5.646s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces
+[5.646s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg
+[5.646s] -- Up-to-date: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail
+[5.646s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__type_support.cpp
+[5.646s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/include/more_interfaces/more_interfaces/msg/detail/address_book__rosidl_typesupport_introspection_cpp.hpp
+[5.646s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_introspection_cpp.so
+[5.647s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[5.647s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_cpp.so
+[5.647s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_typesupport_cpp.so" to ""
+[5.647s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/environment/pythonpath.sh
+[5.647s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/environment/pythonpath.dsv
+[5.647s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces-0.0.0-py3.10.egg-info
+[5.647s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt
+[5.647s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces-0.0.0-py3.10.egg-info/PKG-INFO
+[5.647s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt
+[5.647s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces-0.0.0-py3.10.egg-info/top_level.txt
+[5.647s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces
+[5.648s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/more_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[5.648s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/more_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[5.648s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/__init__.py
+[5.648s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/_more_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[5.648s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/msg
+[5.648s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/msg/_address_book.py
+[5.648s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/msg/_address_book_s.c
+[5.648s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/msg/__init__.py
+[5.649s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/_more_interfaces_s.ep.rosidl_typesupport_c.c
+[5.649s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/_more_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[5.649s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/more_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[5.649s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/libmore_interfaces__rosidl_generator_py.so
+[5.673s] Listing '/home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces'...
+[5.673s] Compiling '/home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/__init__.py'...
+[5.674s] Listing '/home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/msg'...
+[5.674s] Compiling '/home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/msg/__init__.py'...
+[5.674s] Compiling '/home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/msg/_address_book.py'...
+[5.677s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/more_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[5.677s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/more_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.677s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/more_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[5.677s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/more_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.677s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/more_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[5.677s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/local/lib/python3.10/dist-packages/more_interfaces/more_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.678s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_generator_py.so
+[5.678s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/libmore_interfaces__rosidl_generator_py.so" to ""
+[5.678s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/msg/AddressBook.idl
+[5.678s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/msg/AddressBook.msg
+[5.678s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/more_interfaces/publish_address_book
+[5.679s] -- Set runtime path of "/home/kaisirius/btp/cav-platoons/install/more_interfaces/lib/more_interfaces/publish_address_book" to ""
+[5.679s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/ament_index/resource_index/package_run_dependencies/more_interfaces
+[5.679s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/ament_index/resource_index/parent_prefix_path/more_interfaces
+[5.679s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/environment/ament_prefix_path.sh
+[5.679s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/environment/ament_prefix_path.dsv
+[5.679s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/environment/path.sh
+[5.679s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/environment/path.dsv
+[5.679s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/local_setup.bash
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/local_setup.sh
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/local_setup.zsh
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/local_setup.dsv
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/package.dsv
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/ament_index/resource_index/packages/more_interfaces
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/export_more_interfaces__rosidl_generator_cExport.cmake
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/export_more_interfaces__rosidl_generator_cExport-noconfig.cmake
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/export_more_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/export_more_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/more_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/more_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/more_interfaces__rosidl_typesupport_cExport.cmake
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/more_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[5.680s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/export_more_interfaces__rosidl_generator_cppExport.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/export_more_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/export_more_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/more_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/more_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/more_interfaces__rosidl_typesupport_cppExport.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/more_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/export_more_interfaces__rosidl_generator_pyExport.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/export_more_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/rosidl_cmake-extras.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[5.681s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[5.682s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/more_interfacesConfig.cmake
+[5.682s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/cmake/more_interfacesConfig-version.cmake
+[5.682s] -- Installing: /home/kaisirius/btp/cav-platoons/install/more_interfaces/share/more_interfaces/package.xml
+[5.684s] Invoked command in '/home/kaisirius/btp/cav-platoons/build/more_interfaces' returned '0': CMAKE_PREFIX_PATH=/home/kaisirius/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --install /home/kaisirius/btp/cav-platoons/build/more_interfaces
