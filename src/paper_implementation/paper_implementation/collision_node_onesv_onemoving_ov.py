@@ -14,6 +14,8 @@ Topics:
   publishes:  cmd_vel
 """
 
+# Note -> Same code can be used for stationary obstacle, don't run tb3_1 for second burger 
+
 import math
 from dataclasses import dataclass
 
