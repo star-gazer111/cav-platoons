@@ -143,6 +143,177 @@ def rate_limit(current: float, target: float, rise_step: float, fall_step: float
     return max(current - fall_step, target)
 
 
+def paper_gate_alpha(
+    risk_now: float,
+    yellow_low: float = 0.006,
+    yellow_high: float = 0.012,
+) -> float:
+    if risk_now <= yellow_low:
+        return 0.0
+    if risk_now >= yellow_high:
+        return 1.0
+    tau = (risk_now - yellow_low) / max(1e-12, yellow_high - yellow_low)
+    return tau * tau * (3.0 - 2.0 * tau)
+
+
+def paper_crpf_value(
+    xs: float,
+    ys: float,
+    xo: float,
+    yo: float,
+    v_obs: float = 0.0,
+    ax: float = 0.0,
+    ay: float = 0.0,
+    gain: float = 0.40,
+    zeta: float = 1.20,
+    pseudo_eps: float = 1.00,
+    pseudo_rho: float = 0.02,
+    obs_mass: float = 10.0,
+    obs_size: float = 0.30,
+    obs_kappa: float = 1.0,
+    size_star: float = 0.30,
+    kappa_star: float = 1.0,
+) -> float:
+    dx = xs - xo
+    dy = ys - yo
+    tx = pseudo_eps * dx * math.exp(-pseudo_rho * max(v_obs, 0.0))
+    ty = pseudo_eps * dy
+    rd = max(math.hypot(tx, ty), 0.25)
+    mass = obs_mass * (1.566e-14 * max(v_obs, 0.0) ** 6.687 + 0.3354)
+    type_factor = (obs_size / max(size_star, 1e-6)) * (obs_kappa / max(kappa_star, 1e-6))
+
+    accel_norm = math.hypot(ax, ay)
+    rel_norm = math.hypot(dx, dy)
+    if accel_norm < 1e-9 or rel_norm < 1e-9:
+        accel_factor = 1.0
+    else:
+        cos_t = ((ax * dx) + (ay * dy)) / (accel_norm * rel_norm)
+        accel_factor = 5.0 / min(max(5.0 - accel_norm * cos_t, 0.2), 10.0)
+
+    return gain * mass * type_factor * accel_factor / (rd**zeta)
+
+
+def paper_velocity_obstacle_state(
+    xs: float,
+    ys: float,
+    vx: float,
+    vy: float,
+    xo: float,
+    yo: float,
+    ovx: float,
+    ovy: float,
+    combined_radius: float,
+    horizon: float,
+) -> tuple[bool, float, float, float]:
+    rel_px = xo - xs
+    rel_py = yo - ys
+    rel_vx = vx - ovx
+    rel_vy = vy - ovy
+    rel_speed_sq = rel_vx * rel_vx + rel_vy * rel_vy
+    distance = max(math.hypot(rel_px, rel_py), 1e-9)
+    cone_half_angle = math.asin(min(1.0, combined_radius / max(distance, combined_radius)))
+
+    if rel_speed_sq < 1e-9:
+        return False, math.inf, distance - combined_radius, cone_half_angle
+
+    closing_dot = rel_px * rel_vx + rel_py * rel_vy
+    rel_heading = math.atan2(rel_vy, rel_vx)
+    bearing = math.atan2(rel_py, rel_px)
+    heading_error = wrap_angle(rel_heading - bearing)
+    t_ca = clamp(closing_dot / rel_speed_sq, 0.0, horizon)
+    closest_px = rel_px - rel_vx * t_ca
+    closest_py = rel_py - rel_vy * t_ca
+    clearance = math.hypot(closest_px, closest_py) - combined_radius
+    vo_conflict = closing_dot > 0.0 and abs(heading_error) <= cone_half_angle and clearance <= 0.0
+    return vo_conflict, t_ca, clearance, cone_half_angle
+
+
+def paper_dwa_vo_rollout_cost(
+    xs: float,
+    ys: float,
+    yaw: float,
+    v_cmd: float,
+    w_cmd: float,
+    target_y: float,
+    ox: float,
+    oy: float,
+    ovx: float,
+    ovy: float,
+    speed_target: float,
+    dt: float = 0.10,
+    steps: int = 20,
+    lookahead_x: float = 0.55,
+    lane_half_width: float = 0.80,
+    combined_radius: float = 0.32,
+    risk_weight: float = 1.00,
+    vo_weight: float = 1.00,
+    lat_weight: float = 1.00,
+    heading_weight: float = 0.20,
+    speed_weight: float = 0.10,
+    turn_weight: float = 0.10,
+) -> float:
+    risk_now = paper_crpf_value(xs, ys, ox, oy, math.hypot(ovx, ovy))
+    alpha = paper_gate_alpha(risk_now)
+
+    x_t = xs
+    y_t = ys
+    yaw_t = yaw
+    acc_risk = 0.0
+    acc_vo = 0.0
+    acc_lat = 0.0
+    acc_head = 0.0
+    end_error = 0.0
+
+    for step in range(steps):
+        yaw_t = wrap_angle(yaw_t + w_cmd * dt)
+        vx_t = v_cmd * math.cos(yaw_t)
+        vy_t = v_cmd * math.sin(yaw_t)
+        x_t += vx_t * dt
+        y_t += vy_t * dt
+
+        if abs(y_t) > lane_half_width:
+            return math.inf
+
+        horizon = (step + 1) * dt
+        ox_t = ox + ovx * horizon
+        oy_t = oy + ovy * horizon
+        clearance_risk = paper_crpf_value(x_t, y_t, ox_t, oy_t, math.hypot(ovx, ovy))
+        vo_conflict, t_ca, clearance, _ = paper_velocity_obstacle_state(
+            x_t,
+            y_t,
+            vx_t,
+            vy_t,
+            ox_t,
+            oy_t,
+            ovx,
+            ovy,
+            combined_radius,
+            horizon,
+        )
+        if clearance <= -1e-6:
+            return math.inf
+
+        desired_yaw = math.atan2(target_y - y_t, max(0.05, lookahead_x))
+        acc_risk += clearance_risk
+        acc_lat += abs(target_y - y_t)
+        acc_head += abs(wrap_angle(desired_yaw - yaw_t))
+        if vo_conflict:
+            acc_vo += 1.0 + max(0.0, horizon - t_ca)
+        elif clearance < combined_radius:
+            acc_vo += combined_radius - clearance
+        end_error = target_y - y_t
+
+    return (
+        risk_weight * alpha * acc_risk / steps
+        + vo_weight * acc_vo / steps
+        + lat_weight * acc_lat / steps
+        + heading_weight * acc_head / steps
+        + speed_weight * (speed_target - v_cmd) ** 2
+        + turn_weight * w_cmd**2
+        + abs(end_error)
+    )
+
+
 class TwoSVMovingOVNode(Node):
     def __init__(self):
         super().__init__("two_sv_one_moving_ov")
