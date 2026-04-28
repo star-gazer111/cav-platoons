@@ -6,22 +6,22 @@ from nav_msgs.msg import Odometry
 import numpy as np
 import math
 
-# --- SCALED PHYSICAL PARAMETERS ---
+                                    
 DT = 0.1          
 LANE_MAIN = 0.0
 LANE_RIGHT = -0.65 
 
-V_DES = 0.20       # Target Platoon Speed
-V_MIN = 0.05       # Minimum safe speed
-V_MAX = 0.26       # Max speed (allows followers to catch up)
+V_DES = 0.20                             
+V_MIN = 0.05                           
+V_MAX = 0.26                                                 
 A_MIN = -0.4       
 A_MAX = 0.3        
 
-D_HEADWAY = 0.5    # Desired gap between robots
+D_HEADWAY = 0.5                                
 MERGE_TOL = 0.1    
-TAU_LC = 2.0       # Time it takes to perform a lane change (seconds)
+TAU_LC = 2.0                                                         
 
-# --- CRPF / DWA PARAMETERS ---
+                               
 CRPF_G = 0.5
 CRPF_ZETA = 1.2
 PSEUDO_EPS = 1.0
@@ -36,7 +36,7 @@ class PlatoonSplitMergeNode(Node):
     def __init__(self):
         super().__init__('platoon_split_merge')
         
-        # 1. IDENTIFY ROLE
+                          
         self.ns = self.get_namespace().strip('/')
         self.bot_id = int(self.ns.split('_')[-1]) if 'tb3_' in self.ns else 0
         self.preced_id = self.bot_id - 1 if self.bot_id > 0 else -1
@@ -46,7 +46,7 @@ class PlatoonSplitMergeNode(Node):
         self.cmd_pub = self.create_publisher(Twist, 'cmd_vel', 10)
         self.scan_sub = self.create_subscription(LaserScan, 'scan', self.scan_callback, 10)
         
-        # 2. V2V STATE TRACKING
+                               
         self.SVs = {0: None, 1: None, 2: None} 
         self.odom_subs = []
         for i in range(3):
@@ -54,7 +54,7 @@ class PlatoonSplitMergeNode(Node):
                                            lambda msg, idx=i: self.odom_v2v_callback(msg, idx), 10)
             self.odom_subs.append(sub)
 
-        # 3. FSM STATE (Lateral)
+                                
         self.v = V_DES
         self.lane_cur = "MAIN"
         self.lane_to = "MAIN"
@@ -62,10 +62,10 @@ class PlatoonSplitMergeNode(Node):
         self.lc_active = False
         self.lc_t = 0.0
         
-        # 4. OBSTACLE TRACKING (Memory)
-        self.ov_x = 3.0    # Initial spawn guess
+                                       
+        self.ov_x = 3.0                         
         self.ov_y = 0.0
-        self.ov_vx = 0.1   # Moving velocity matches launch file
+        self.ov_vx = 0.1                                        
         self.ov_vy = 0.0
         self.ov_detected = False
         
@@ -146,9 +146,9 @@ class PlatoonSplitMergeNode(Node):
             return tau**2 * (3 - 2*tau)
 
     def crpf(self, rx, ry, ox, oy, v_obs):
-        # *** THE OVERTAKE FIX ***
-        # If the robot is safely in the adjacent lane (lateral distance > 0.35m),
-        # force risk to 0 so it doesn't brake and can maintain overtake speed.
+                                  
+                                                                                 
+                                                                              
         if abs(ry - oy) > 0.35:
             return 0.0
 
@@ -169,14 +169,14 @@ class PlatoonSplitMergeNode(Node):
         if self.SVs[self.bot_id] is None: return
         my_state = self.SVs[self.bot_id]
 
-        # 1. OBSTACLE MEMORY UPDATE
+                                   
         if not self.ov_detected:
             self.ov_x += self.ov_vx * DT
             self.ov_y += self.ov_vy * DT
 
         dxOV = self.ov_x - my_state['x']
 
-        # 2. LATERAL OVERTAKING STATE MACHINE 
+                                              
         if not self.lc_active:
             if self.lane_cur == "MAIN":
                 if 0.0 < dxOV < 1.5:
@@ -201,7 +201,7 @@ class PlatoonSplitMergeNode(Node):
                 self.lane_cur = self.lane_to
                 target_y = y_to
 
-        # 3. LONGITUDINAL CACC GAP CONTROLLER
+                                             
         v_pref = V_DES
         if self.preced_id >= 0 and self.SVs[self.preced_id] is not None:
             pred = self.SVs[self.preced_id]
@@ -212,7 +212,7 @@ class PlatoonSplitMergeNode(Node):
             v_pref = V_DES + (k_p * gap_error)
             v_pref = min(max(v_pref, V_MIN), V_MAX)
 
-        # 4. LONGITUDINAL DWA (Collision Risk Checking)
+                                                       
         a_samples = np.linspace(A_MIN, A_MAX, 7)
         risk_OV = self.crpf(my_state['x'], my_state['y'], self.ov_x, self.ov_y, self.ov_vx)
         alpha = self.gate_alpha(risk_OV, CR_YELLOW_LOW, CR_YELLOW_HIGH)
@@ -239,7 +239,7 @@ class PlatoonSplitMergeNode(Node):
 
         self.v = best_v_next
 
-        # 5. DIFFERENTIAL DRIVE STEERING CONTROL
+                                                
         error_y = target_y - my_state['y']
         lookahead_x = 0.5 
         

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+                      
 """
 Single-node moving-SV / moving-OV overtake case.
 
@@ -29,8 +29,8 @@ class CRPFDWASingleNodeMovingOVNode(CRPFDWAMovingSVOvtakeNode):
             self.declare_parameter("obstacle_angular_speed", 0.0).value
         )
 
-        # Keep the planner's nominal obstacle-speed model aligned with the speed
-        # this same node commands on the obstacle.
+                                                                                
+                                                  
         self.nominal_obstacle_speed = self.obstacle_linear_speed
         self.obstacle_cmd_pub = self.create_publisher(Twist, self.obstacle_cmd_topic, 10)
 

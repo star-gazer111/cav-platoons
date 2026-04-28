@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+                      
 """
 CRPF + DWA avoidance for one TurtleBot3 Burger and one moving obstacle.
 
@@ -27,17 +27,17 @@ from rclpy.qos import qos_profile_sensor_data
 from sensor_msgs.msg import LaserScan
 
 
-# ============================================================
-# Robot / Sensor Parameters
-# ============================================================
+                                                              
+                           
+                                                              
 
 DT = 0.10
 
-# Start planning before the obstacle is already at the robot's nose. This can
-# still be overridden with the ROS parameter "obstacle_lookahead".
-OBSTACLE_LOOKAHEAD = 0.7  # m
+                                                                             
+                                                                  
+OBSTACLE_LOOKAHEAD = 0.7     
 
-# TurtleBot3 Burger footprint plus clearance.
+                                             
 BURGER_RADIUS = 0.18
 PASS_CLEARANCE = 0.20
 R_ROBOT = BURGER_RADIUS
@@ -50,7 +50,7 @@ PASS_RIGHT = -1
 PASS_LEFT = 1
 PASS_NONE = 0
 
-# Forward scan region used to detect another Burger.
+                                                    
 FRONT_FOV_DEG = 60.0
 FRONT_FOV_RAD = math.radians(FRONT_FOV_DEG)
 MIN_SCAN_RANGE = 0.10
@@ -58,7 +58,7 @@ MAX_FRONT_LATERAL = 0.55
 MIN_CLUSTER_POINTS = 3
 CLUSTER_RANGE_GAP = 0.16
 
-# Dynamic window / motion limits.
+                                 
 V_MIN = 0.02
 V_MAX = 0.15
 V_DES = 0.10
@@ -72,7 +72,7 @@ STEPS = 30
 W_CMD_RATE = 0.70
 V_CMD_RATE = 0.14
 
-# Path bounds and passing behavior in the initial-path frame.
+                                                             
 LANE_HALF_WIDTH = 0.95
 LANE_LEFT_LIMIT = LANE_HALF_WIDTH - BURGER_RADIUS
 LANE_RIGHT_LIMIT = -LANE_HALF_WIDTH + BURGER_RADIUS
@@ -87,7 +87,7 @@ MAX_TRACK_DT = 0.80
 MAX_OBS_SPEED = 0.35
 TRACK_MAX_JUMP = 0.75
 
-# CRPF parameters, same structure as the earlier implementation.
+                                                                
 CRPF_G = 0.40
 CRPF_ZETA = 1.20
 PSEUDO_EPS = 1.00
@@ -102,7 +102,7 @@ KAPPA_STAR = 1.0
 CR_YELLOW_LOW = 0.006
 CR_YELLOW_HIGH = 0.012
 
-# DWA cost weights.
+                   
 W_RISK = 1.00
 W_LAT = 1.05
 W_HEAD = 0.24
@@ -114,19 +114,19 @@ W_SIDE = 1.35
 W_PASS_PREFERENCE = 0.18
 W_SIDE_SWITCH = 0.30
 
-# Free-space path following. CRPF+DWA takes over only after detection.
+                                                                      
 K_FREE_LAT = 0.85
 K_FREE_HEAD = 1.15
 
-# Debug logging cadence.
+                        
 SCAN_DEBUG_THROTTLE_SEC = 2.00
 STATE_DEBUG_THROTTLE_SEC = 0.35
 NO_SCAN_WARN_THROTTLE_SEC = 1.00
 
 
-# ============================================================
-# Math Helpers
-# ============================================================
+                                                              
+              
+                                                              
 
 def wrap_angle(angle: float) -> float:
     return (angle + math.pi) % (2.0 * math.pi) - math.pi
@@ -196,9 +196,9 @@ def pass_side_offset(side: int) -> float:
     return 0.0
 
 
-# ============================================================
-# CRPF Helpers
-# ============================================================
+                                                              
+              
+                                                              
 
 def _pseudo_distance(xs, ys, xo, yo, v_obs=0.0):
     dx = xs - xo
@@ -246,9 +246,9 @@ def gate_alpha(risk_now: float) -> float:
     return tau * tau * (3.0 - 2.0 * tau)
 
 
-# ============================================================
-# Initial Path Frame
-# ============================================================
+                                                              
+                    
+                                                              
 
 @dataclass
 class PathFrame:
@@ -273,9 +273,9 @@ class PathFrame:
         return wrap_angle(yaw - self.yaw0)
 
 
-# ============================================================
-# ROS 2 Node
-# ============================================================
+                                                              
+            
+                                                              
 
 class CRPFDWABurgerNode(Node):
     def __init__(self):
@@ -351,9 +351,9 @@ class CRPFDWABurgerNode(Node):
             f"rollout={STEPS * DT:.1f} s"
         )
 
-    # --------------------------------------------------------
-    # Callbacks
-    # --------------------------------------------------------
+                                                              
+               
+                                                              
 
     def odom_cb(self, msg: Odometry):
         self.x = msg.pose.pose.position.x
@@ -402,9 +402,9 @@ class CRPFDWABurgerNode(Node):
 
         self.log_scan_debug(msg)
 
-    # --------------------------------------------------------
-    # Detection
-    # --------------------------------------------------------
+                                                              
+               
+                                                              
 
     def detect_front_obstacle(self, msg: LaserScan) -> tuple[bool, float, float, float]:
         ranges = np.asarray(msg.ranges, dtype=float)
@@ -477,9 +477,9 @@ class CRPFDWABurgerNode(Node):
             float(np.median(ly[best_cluster])),
         )
 
-    # --------------------------------------------------------
-    # Obstacle Tracking
-    # --------------------------------------------------------
+                                                              
+                       
+                                                              
 
     def update_obstacle_track(self, measured_x: float, measured_y: float, now):
         previous_track = (
@@ -564,9 +564,9 @@ class CRPFDWABurgerNode(Node):
         self.obs_source = "none"
         self.obs_seen_count = 0
 
-    # --------------------------------------------------------
-    # CRPF+DWA Control
-    # --------------------------------------------------------
+                                                              
+                      
+                                                              
 
     def control_loop(self):
         if not self.have_odom or self.path is None:
@@ -855,9 +855,9 @@ class CRPFDWABurgerNode(Node):
             if obs_along - robot_along < -X_CLEAR_AHEAD:
                 self.clear_obstacle("passed")
 
-    # --------------------------------------------------------
-    # Logging / Publishing
-    # --------------------------------------------------------
+                                                              
+                          
+                                                              
 
     def publish_cmd(self, linear: float, angular: float):
         if abs(linear) < 1e-6 and abs(angular) < 1e-6:

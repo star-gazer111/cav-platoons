@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+                      
 """
 CRPF + DWA avoidance for one moving TurtleBot3 overtaking a slower moving obstacle.
 
@@ -69,7 +69,7 @@ class CRPFDWAMovingSVOvtakeNode(CRPFDWABurgerNode):
         robot_along, _ = self.path.along_lateral(self.x, self.y)
         obs_along, _ = self.path.along_lateral(ox, oy)
 
-        # Once the obstacle is clearly behind the SV, drop back to the normal cruise target.
+                                                                                            
         if obs_along - robot_along < -0.10:
             return V_DES
 

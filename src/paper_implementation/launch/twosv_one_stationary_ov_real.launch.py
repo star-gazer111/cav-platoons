@@ -18,9 +18,9 @@ def generate_launch_description():
         "enable_debug_logs": True,
         "debug_interval_sec": 1.0,
         "wait_warn_interval_sec": 2.0,
-        # Real robots usually publish odom in separate local frames.
-        # These offsets map each robot's first odom sample into one shared
-        # platoon frame so the follower can reason about the leader's pose.
+                                                                    
+                                                                          
+                                                                           
         "use_initial_pose_offsets": LaunchConfiguration("use_initial_pose_offsets"),
         "sv0_initial_x": LaunchConfiguration("sv0_initial_x"),
         "sv0_initial_y": LaunchConfiguration("sv0_initial_y"),

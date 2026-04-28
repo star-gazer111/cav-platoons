@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+                      
 """
 Two moving SVs with one moving OV.
 

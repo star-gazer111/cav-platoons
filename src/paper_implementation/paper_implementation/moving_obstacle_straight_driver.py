@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+                      
 """
 Constant-speed straight-line driver for the moving obstacle Burger.
 """
